@@ -1,0 +1,8 @@
+numpy
+scipy
+fastapi
+uvicorn
+pydantic>=2
+pytest
+hypothesis
+httpx
