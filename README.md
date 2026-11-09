@@ -44,6 +44,7 @@ python scripts/run_benchmarks.py --rounds 4000000
 | **Graded suggestions**: every playing action, next-bet size and NO BET gets an A–D grade with the reasons. The system never bets | `grading.py` | Built |
 | Live-dealer study (penetration × rules × spread, with sit-out) | `scripts/live_dealer_study.py` → `docs/LIVE_DEALER_STUDY.md` | Built |
 | Venue profiles with verification status, **Bovada templates** | `profiles.py`, `profiles/*.json` | Built — Bovada rules **unverified** |
+| Browser Use V4 integration (hosted agent): spend confirmation, ≤ $1 cap per run, no retry of ambiguous creates, cancels abandoned runs, validates results. Tested with mocks only | `integrations/browser_use.py`, `scripts/bovada_public_check.py` | Built |
 | FastAPI backend + dashboard | `api/app.py`, `web/index.html` | Built |
 
 See `docs/` for the architecture, the math spec, the research register, benchmark results, the Bovada guide and known limitations.
