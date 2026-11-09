@@ -14,13 +14,43 @@ Bovada, read its screens, or place bets.
 | `bovada-baccarat` | Baccarat | either | Composition matters only in a live shoe |
 | `bovada-roulette-american` / `-european` | Roulette | RNG | n/a |
 
-## Status: every Bovada rule is UNVERIFIED
+## What Bovada's own public pages confirm (checked 2026-11-09)
 
-I could not find a primary Bovada source for its table rules. Searches returned only
-secondary sites, and one of them describes a Bovada single-deck game as H17 with double
-on any two cards and after splits. Rules also differ by title and can change. Every
-template therefore ships with `verified: false`, and every analysis shows a yellow
-"UNVERIFIED template" banner.
+A read-only Browser Use run read Bovada's public help pages and Terms of Service. I then re-fetched every cited
+page and checked each quote against the live text: all 31 checkable quotes matched. Raw results are in
+`research/bovada/`. The two runs cost $0.36.
+
+| Game | Confirmed by Bovada | Not published anywhere public |
+|---|---|---|
+| Classic Blackjack (RNG) | 6 decks, 3:2, **shuffled after every hand**, **dealer hits soft 17**, split up to 3 hands, surrender allowed | peek, doubling limits, DAS, split aces, insurance, surrender timing |
+| Single Deck (RNG) | 1 deck, H17, double any two, double after split, split aces one card, 3:2, split to 2 hands (New) / 3 (Classic) | peek, surrender, insurance |
+| Double Deck (RNG) | 2 decks, split once ("same rules as Single Deck") | payout, peek, surrender, insurance |
+| Live Dealer Blackjack | **nothing** | everything: decks, soft 17, payout, peek, penetration |
+| Baccarat | only live **Super 6** (6 decks, 5% commission, tie 8:1, pairs 11:1), which Bovada calls a different game | standard baccarat rules |
+| Roulette | American (38 slots, 0 + 00) and European (37 slots) both offered, also live | La Partage / En Prison |
+
+Simulated house edge with the confirmed rules (1.5M hands each, ±0.18%): **Single Deck ≈ −0.11%**,
+Classic ≈ −0.47%, Double Deck ≈ −0.62%. All are negative and none can be counted, because every RNG game is
+reshuffled each hand. Single Deck is the cheapest to play.
+
+The blackjack profiles stay **unverified** (the banner says PARTLY CONFIRMED) because peek and insurance rules aren't
+public. American roulette is fully verified, since its only rule is the wheel type.
+
+## Terms of Service: what applies to this tool
+
+Bovada's Terms of Service (latest update January 3, 2024) say:
+
+- **§6.3 No Player Assistance Programs:** prohibits "external player assistance programs" designed to give an
+  unfair advantage. The definition explicitly includes **computer software**. Penalty: account closure and voided
+  winnings.
+- **§6.4 Bots Prohibited:** all actions must be made by the player through Bovada's own interface. Penalty:
+  account disabled and **all balances, including deposits, forfeited**.
+- **Card counting and "advantage play" are not mentioned** anywhere in the public terms or help center.
+
+**Practical reading:** counting in your head from what you see is your own first-hand observation. Running this
+software **during real-money play** could reasonably be treated as an §6.3 assistance program. Use Casino Savant
+for **study, drills, and post-session review**. It never places bets, and you should not run it alongside a live
+real-money hand on Bovada.
 
 ### How to verify a profile (2 minutes per game)
 

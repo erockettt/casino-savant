@@ -1,0 +1,617 @@
+{
+  "run_id": "a23b977e-42cd-43a7-9d5b-2396ad0bec60",
+  "status": "completed",
+  "ok": true,
+  "result": "{\n  \"scope_note\": \"The Bovada Help Center entry redirected to a regional login page, so no login was attempted. Findings below use publicly readable Bovada Hub pages only. NOT FOUND means the requested rule was not stated in the accessible public Bovada materials reviewed. Each source_ids value points to the exact URL and quote in sources.\",\n  \"blackjack\": [\n    {\n      \"game\": \"Blackjack (main online/RNG version)\",\n      \"number_of_decks\": {\n        \"value\": \"6 decks\",\n        \"source_ids\": [\"BJ1\"]\n      },\n      \"dealer_soft_17\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"blackjack_payout\": {\n        \"value\": \"3:2\",\n        \"source_ids\": [\"BJ1\"]\n      },\n      \"dealer_peek_or_no_hole_card\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"doubling_rules\": {\n        \"value\": \"Doubling down is available; eligible hands and other restrictions are NOT FOUND.\",\n        \"source_ids\": [\"BJ1\"]\n      },\n      \"double_after_split\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"number_of_splits\": {\n        \"value\": \"NOT FOUND. The article says players can play up to three hands at once, but does not state the split count.\",\n        \"source_ids\": [\"BJ1\"]\n      },\n      \"split_aces\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"surrender\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"insurance\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      }\n    },\n    {\n      \"game\": \"Classic Blackjack (six-deck rules referenced by Perfect Pairs)\",\n      \"number_of_decks\": {\n        \"value\": \"6 decks\",\n        \"source_ids\": [\"BJ4\"]\n      },\n      \"dealer_soft_17\": {\n        \"value\": \"Dealer hits soft 17\",\n        \"source_ids\": [\"BJ4\"]\n      },\n      \"blackjack_payout\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"dealer_peek_or_no_hole_card\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"doubling_rules\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"double_after_split\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"number_of_splits\": {\n        \"value\": \"Up to three hands\",\n        \"source_ids\": [\"BJ4\"]\n      },\n      \"split_aces\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"surrender\": {\n        \"value\": \"Allowed; surrender timing is NOT FOUND.\",\n        \"source_ids\": [\"BJ4\"]\n      },\n      \"insurance\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      }\n    },\n    {\n      \"game\": \"Single Deck Blackjack (New format)\",\n      \"number_of_decks\": {\n        \"value\": \"1 deck\",\n        \"source_ids\": [\"BJ1\"]\n      },\n      \"dealer_soft_17\": {\n        \"value\": \"Dealer hits soft 17\",\n        \"source_ids\": [\"BJ2\"]\n      },\n      \"blackjack_payout\": {\n        \"value\": \"3:2\",\n        \"source_ids\": [\"BJ3\"]\n      },\n      \"dealer_peek_or_no_hole_card\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"doubling_rules\": {\n        \"value\": \"Double on any two cards\",\n        \"source_ids\": [\"BJ2\"]\n      },\n      \"double_after_split\": {\n        \"value\": \"Allowed\",\n        \"source_ids\": [\"BJ2\"]\n      },\n      \"number_of_splits\": {\n        \"value\": \"The article says \u201csplit up to two hands\u201d; it does not clarify whether this means two split operations or two total hands.\",\n        \"source_ids\": [\"BJ3\"]\n      },\n      \"split_aces\": {\n        \"value\": \"Split Aces receive one card only\",\n        \"source_ids\": [\"BJ3\"]\n      },\n      \"surrender\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"insurance\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      }\n    },\n    {\n      \"game\": \"Double Deck Blackjack\",\n      \"number_of_decks\": {\n        \"value\": \"2 decks\",\n        \"source_ids\": [\"BJ1\"]\n      },\n      \"dealer_soft_17\": {\n        \"value\": \"Dealer hits soft 17, by the article\u2019s statement that Double Deck has the same rules as Single Deck.\",\n        \"source_ids\": [\"BJ1\", \"BJ2\"]\n      },\n      \"blackjack_payout\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"dealer_peek_or_no_hole_card\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"doubling_rules\": {\n        \"value\": \"Double on any two cards, by the article\u2019s statement that Double Deck has the same rules as Single Deck.\",\n        \"source_ids\": [\"BJ1\", \"BJ2\"]\n      },\n      \"double_after_split\": {\n        \"value\": \"Allowed, by the article\u2019s statement that Double Deck has the same rules as Single Deck.\",\n        \"source_ids\": [\"BJ1\", \"BJ2\"]\n      },\n      \"number_of_splits\": {\n        \"value\": \"Split once per round\",\n        \"source_ids\": [\"BJ1\"]\n      },\n      \"split_aces\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"surrender\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"insurance\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      }\n    },\n    {\n      \"game\": \"Classic Single Deck Blackjack\",\n      \"number_of_decks\": {\n        \"value\": \"1 deck\",\n        \"source_ids\": [\"BJ1\"]\n      },\n      \"dealer_soft_17\": {\n        \"value\": \"Dealer hits soft 17\",\n        \"source_ids\": [\"BJ2\"]\n      },\n      \"blackjack_payout\": {\n        \"value\": \"3:2\",\n        \"source_ids\": [\"BJ3\"]\n      },\n      \"dealer_peek_or_no_hole_card\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"doubling_rules\": {\n        \"value\": \"Double on any two cards\",\n        \"source_ids\": [\"BJ2\"]\n      },\n      \"double_after_split\": {\n        \"value\": \"Allowed\",\n        \"source_ids\": [\"BJ2\"]\n      },\n      \"number_of_splits\": {\n        \"value\": \"The Classic format allows splitting up to three hands.\",\n        \"source_ids\": [\"BJ3\"]\n      },\n      \"split_aces\": {\n        \"value\": \"Split Aces receive one card only\",\n        \"source_ids\": [\"BJ3\"]\n      },\n      \"surrender\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"insurance\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      }\n    },\n    {\n      \"game\": \"European Blackjack\",\n      \"number_of_decks\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"dealer_soft_17\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"blackjack_payout\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"dealer_peek_or_no_hole_card\": {\n        \"value\": \"No second dealer card until after the player has made their decisions; this is a no-hole-card procedure as described on the page.\",\n        \"source_ids\": [\"BJ1\"]\n      },\n      \"doubling_rules\": {\n        \"value\": \"Doubling is among the decisions made before the dealer receives a second card; eligible hands and other restrictions are NOT FOUND.\",\n        \"source_ids\": [\"BJ1\"]\n      },\n      \"double_after_split\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"number_of_splits\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"split_aces\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"surrender\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"insurance\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      }\n    },\n    {\n      \"game\": \"Perfect Pairs Blackjack\",\n      \"number_of_decks\": {\n        \"value\": \"6 decks\",\n        \"source_ids\": [\"BJ4\"]\n      },\n      \"dealer_soft_17\": {\n        \"value\": \"Dealer hits soft 17\",\n        \"source_ids\": [\"BJ4\"]\n      },\n      \"blackjack_payout\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"dealer_peek_or_no_hole_card\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"doubling_rules\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"double_after_split\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"number_of_splits\": {\n        \"value\": \"Up to three hands\",\n        \"source_ids\": [\"BJ4\"]\n      },\n      \"split_aces\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"surrender\": {\n        \"value\": \"Allowed; surrender timing is NOT FOUND.\",\n        \"source_ids\": [\"BJ4\"]\n      },\n      \"insurance\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      }\n    },\n    {\n      \"game\": \"Zappit Blackjack\",\n      \"number_of_decks\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"dealer_soft_17\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"blackjack_payout\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"dealer_peek_or_no_hole_card\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"doubling_rules\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"double_after_split\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"number_of_splits\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"split_aces\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"surrender\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"insurance\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      }\n    },\n    {\n      \"game\": \"Live Casino Blackjack\",\n      \"number_of_decks\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"dealer_soft_17\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"blackjack_payout\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"dealer_peek_or_no_hole_card\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"doubling_rules\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"double_after_split\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"number_of_splits\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"split_aces\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"surrender\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"insurance\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"shuffle_method_or_penetration\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      }\n    }\n  ],\n  \"baccarat\": {\n    \"standard_baccarat\": {\n      \"decks\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"commission\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"tie_payout\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      },\n      \"pair_payout\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      }\n    },\n    \"live_casino_super_6\": {\n      \"note\": {\n        \"value\": \"Bovada describes Super 6 as similar to baccarat but with key differences; these Super 6 rules should not be treated as standard baccarat rules.\",\n        \"source_ids\": [\"BC1\"]\n      },\n      \"decks\": {\n        \"value\": \"6 decks\",\n        \"source_ids\": [\"BC1\"]\n      },\n      \"commission\": {\n        \"value\": \"Banker bets have a 5% commission\",\n        \"source_ids\": [\"BC1\"]\n      },\n      \"tie_payout\": {\n        \"value\": \"8:1\",\n        \"source_ids\": [\"BC1\"]\n      },\n      \"pair_side_bet_payout\": {\n        \"value\": \"Pairs: 11:1; Either Pair: 5:1\",\n        \"source_ids\": [\"BC1\"]\n      },\n      \"no_commission_variant\": {\n        \"value\": \"NOT FOUND\",\n        \"source_ids\": []\n      }\n    }\n  },\n  \"roulette\": {\n    \"listed_games\": {\n      \"value\": [\n        \"Classic American Roulette\",\n        \"Classic European Roulette\",\n        \"American Roulette\",\n        \"European Roulette\",\n        \"Live Dealer Roulette\"\n      ],\n      \"source_ids\": [\"R1\"]\n    },\n    \"wheel_types\": {\n      \"value\": \"American Roulette: 38 slots with 0 and 00. European Roulette: 37 slots with a single 0.\",\n      \"source_ids\": [\"R2\"]\n    },\n    \"live_wheel_availability\": {\n      \"value\": \"American and European roulette are both stated to be available live.\",\n      \"source_ids\": [\"BJ5\"]\n    },\n    \"flash_roulette\": {\n      \"value\": \"The published Flash Roulette article describes a European-style wheel with 37 numbers (0-36).\",\n      \"source_ids\": [\"R3\"]\n    },\n    \"la_partage\": {\n      \"value\": \"NOT FOUND\",\n      \"source_ids\": []\n    },\n    \"en_prison\": {\n      \"value\": \"NOT FOUND\",\n      \"source_ids\": []\n    }\n  },\n  \"sources\": [\n    {\n      \"id\": \"BJ1\",\n      \"url\": \"https://hub.bovada.lv/casino/blackjack/types-of-online-blackjack-games-to-play/\",\n      \"quote\": \"Make Blackjack \u2013 In this card game, making a Blackjack means finishing precisely on 21. If you can pull this off with only your first two cards, you\u2019ll earn a 3:2 payout.\\nAs Bovada Casino\u2019s primary version of Blackjack, this card game is played using a total of six decks.\\nThe decks are shuffled after every hand, just like at a live casino.\\nYou can also boost your winnings by doubling down and splitting whenever the opportunity should present itself.\\nWith a huge max bet of $2,500 and the ability to play up to three hands at once, you can win a huge payday playing Blackjack.\\nJust as the name suggests, Single Deck Blackjack takes things back to the basics by playing with just a single deck of cards that gets shuffled after every hand.\\nFeaturing two decks in the shoe, this version of the famous casino game provides yet another option for online Blackjack players at Bovada Casino.\\nThis game includes all of the same rules as Single Deck Blackjack, but has twice as many aces and face cards in the deck.\\nJust remember this game only allows you to split once per round and features a maximum bet of $250 per hand.\\nClassic Single Deck Blackjack allows Bovada players to combine the excitement of Single Deck Blackjack with the realistic gameplay of Classic Blackjack. The rules and betting limits are the same as Single Deck Blackjack so there are no surprises, but you can enjoy the feeling of sitting at a virtual table and handling your virtual chips.\\nThe European version of this famous table game functions similarly to the standard version of the game, however there is one key difference \u2013 in the European version, the dealer doesn\u2019t receive a second card until after the player has made their decision, including doubling and splitting.\\nWith every other aspect of the game unchanged, European Blackjack can be a good choice for players looking to switch things up on the felt.\\nThis innovative game allows you to play Blackjack online against real dealers that are streaming live from a studio, letting you interact with a real live casino.\"\n    },\n    {\n      \"id\": \"BJ2\",\n      \"url\": \"https://hub.bovada.lv/casino/blackjack/a-guide-to-double-down-in-single-deck-blackjack/\",\n      \"quote\": \"At Bovada, you can double any two cards when you play Single Deck Blackjack, and the Dealer must hit on Soft 17.\\nIn both Single Deck Blackjack variants at Bovada, you\u2019re allowed to double on any two cards you\u2019re dealt \u2013 and you can double down after a split.\\nIn both the Classic and New versions, the dealer must hit on soft 17.\"\n    },\n    {\n      \"id\": \"BJ3\",\n      \"url\": \"https://hub.bovada.lv/casino/slots/classic-blackjack-vs-the-new-blackjack/\",\n      \"quote\": \"When you play Single Deck Blackjack at Bovada using the new format, you may split up to two hands; with the Classic format, you get to split up to three hands.\\nSplit Aces receive only one card in both versions.\\nIn short, you get improved functionality when you play The New Blackjack at Bovada, but if you\u2019re playing Single Deck Blackjack using the new layout, you lose the ability to split up to three times. Otherwise, the same Blackjack rules apply when it comes to the Dealer hitting on soft 17, Blackjacks paying out at 3:2, and so on.\"\n    },\n    {\n      \"id\": \"BJ4\",\n      \"url\": \"https://hub.bovada.lv/casino/blackjack/an-introduction-to-perfect-pairs-blackjack/\",\n      \"quote\": \"If you already know how to play Blackjack, then Perfect Pairs will be easy for you to grasp. The blackjack portion of the game remains the same; just like Classic Blackjack, there are six decks in the shoe, the dealer hits on soft 17, you can split up to three hands, and surrenders are allowed.\"\n    },\n    {\n      \"id\": \"BJ5\",\n      \"url\": \"https://hub.bovada.lv/casino/table-games/live-dealer-games-what-you-need-to-know/\",\n      \"quote\": \"When you play live Casino online, you can watch every action of the dealer, from shuffling cards to spinning the roulette wheel. Even though RNG games are 100% trustworthy and are designed to keep online casino games safe and fully randomized, a live dealer helps some players trust the fairness of the game even more.\\nBoth varieties of roulette \u2013 American and European \u2013 are available live, and certain Blackjack tables offer Early Payout as an option.\"\n    },\n    {\n      \"id\": \"BC1\",\n      \"url\": \"https://hub.bovada.lv/casino/table-games/live-dealer-super-6-guide/\",\n      \"quote\": \"Super 6 is a fun and exciting table game featuring plenty of betting options. The game is very similar to baccarat, but there are a few key differences that make it all its own.\\nThe game is played with a six-deck shoe and the Live Casino feature allows you to see the actual cards being dealt right before your eyes.\\nPlayer bets pay out even money, as do Banker bets (minus a five percent commission), while a Tie bet pays out 8:1. The primary difference with Super 6 is this \u2013 if the Banker wins with a total of 6, the payout is 1:2 (or in other words, you\u2019ll win half of what you bet).\\nAnother popular side bet in Live Casino Super 6 is the Pairs wager. This bet wins if the first two cards dealt to the Player or the Banker combine to make a pair. For example, if the first two cards dealt are 10-10 or K-K, the side bet is deemed a winner. This side bet also has a generous payout at 11:1. There\u2019s also the Either Pair side bet option, which works the same way but applies to both the Banker and Dealer\u2019s hand, and comes with 5:1 payout odds.\"\n    },\n    {\n      \"id\": \"R1\",\n      \"url\": \"https://hub.bovada.lv/casino/roulette/roulette-payout-calculator/\",\n      \"quote\": \"With tons of roulette games available, you will be sure to find what you are looking for:\\nClassic American Roulette\\nClassic European Roulette\\nAmerican Roulette\\nEuropean Roulette\\nLive Dealer Roulette\"\n    },\n    {\n      \"id\": \"R2\",\n      \"url\": \"https://hub.bovada.lv/casino/roulette/you-need-to-try-these-roulette-strategies/\",\n      \"quote\": \"Bovada Casino has both American Roulette and European Roulette tables available. While both games are similar, there\u2019s a distinct difference between the two types of online roulette; European Roulette features a wheel with 37 slots and only a single zero (0), while American Roulette uses a wheel with 38 slots with two zeros (0, 00).\"\n    },\n    {\n      \"id\": \"R3\",\n      \"url\": \"https://hub.bovada.lv/casino/roulette/guide-to-mastering-flash-roulette-tips-and-strategies/\",\n      \"quote\": \"Flash Roulette at Bovada uses a European-style wheel with 37 numbers (0-36) and allows for both inside and outside bets, similar to traditional roulette.\"\n    }\n  ]\n}",
+  "output": {
+    "baccarat": {
+      "live_casino_super_6": {
+        "commission": {
+          "source_ids": [
+            "BC1"
+          ],
+          "value": "Banker bets have a 5% commission"
+        },
+        "decks": {
+          "source_ids": [
+            "BC1"
+          ],
+          "value": "6 decks"
+        },
+        "no_commission_variant": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "note": {
+          "source_ids": [
+            "BC1"
+          ],
+          "value": "Bovada describes Super 6 as similar to baccarat but with key differences; these Super 6 rules should not be treated as standard baccarat rules."
+        },
+        "pair_side_bet_payout": {
+          "source_ids": [
+            "BC1"
+          ],
+          "value": "Pairs: 11:1; Either Pair: 5:1"
+        },
+        "tie_payout": {
+          "source_ids": [
+            "BC1"
+          ],
+          "value": "8:1"
+        }
+      },
+      "standard_baccarat": {
+        "commission": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "decks": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "pair_payout": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "tie_payout": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        }
+      }
+    },
+    "blackjack": [
+      {
+        "blackjack_payout": {
+          "source_ids": [
+            "BJ1"
+          ],
+          "value": "3:2"
+        },
+        "dealer_peek_or_no_hole_card": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "dealer_soft_17": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "double_after_split": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "doubling_rules": {
+          "source_ids": [
+            "BJ1"
+          ],
+          "value": "Doubling down is available; eligible hands and other restrictions are NOT FOUND."
+        },
+        "game": "Blackjack (main online/RNG version)",
+        "insurance": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "number_of_decks": {
+          "source_ids": [
+            "BJ1"
+          ],
+          "value": "6 decks"
+        },
+        "number_of_splits": {
+          "source_ids": [
+            "BJ1"
+          ],
+          "value": "NOT FOUND. The article says players can play up to three hands at once, but does not state the split count."
+        },
+        "split_aces": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "surrender": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        }
+      },
+      {
+        "blackjack_payout": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "dealer_peek_or_no_hole_card": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "dealer_soft_17": {
+          "source_ids": [
+            "BJ4"
+          ],
+          "value": "Dealer hits soft 17"
+        },
+        "double_after_split": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "doubling_rules": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "game": "Classic Blackjack (six-deck rules referenced by Perfect Pairs)",
+        "insurance": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "number_of_decks": {
+          "source_ids": [
+            "BJ4"
+          ],
+          "value": "6 decks"
+        },
+        "number_of_splits": {
+          "source_ids": [
+            "BJ4"
+          ],
+          "value": "Up to three hands"
+        },
+        "split_aces": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "surrender": {
+          "source_ids": [
+            "BJ4"
+          ],
+          "value": "Allowed; surrender timing is NOT FOUND."
+        }
+      },
+      {
+        "blackjack_payout": {
+          "source_ids": [
+            "BJ3"
+          ],
+          "value": "3:2"
+        },
+        "dealer_peek_or_no_hole_card": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "dealer_soft_17": {
+          "source_ids": [
+            "BJ2"
+          ],
+          "value": "Dealer hits soft 17"
+        },
+        "double_after_split": {
+          "source_ids": [
+            "BJ2"
+          ],
+          "value": "Allowed"
+        },
+        "doubling_rules": {
+          "source_ids": [
+            "BJ2"
+          ],
+          "value": "Double on any two cards"
+        },
+        "game": "Single Deck Blackjack (New format)",
+        "insurance": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "number_of_decks": {
+          "source_ids": [
+            "BJ1"
+          ],
+          "value": "1 deck"
+        },
+        "number_of_splits": {
+          "source_ids": [
+            "BJ3"
+          ],
+          "value": "The article says \u201csplit up to two hands\u201d; it does not clarify whether this means two split operations or two total hands."
+        },
+        "split_aces": {
+          "source_ids": [
+            "BJ3"
+          ],
+          "value": "Split Aces receive one card only"
+        },
+        "surrender": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        }
+      },
+      {
+        "blackjack_payout": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "dealer_peek_or_no_hole_card": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "dealer_soft_17": {
+          "source_ids": [
+            "BJ1",
+            "BJ2"
+          ],
+          "value": "Dealer hits soft 17, by the article\u2019s statement that Double Deck has the same rules as Single Deck."
+        },
+        "double_after_split": {
+          "source_ids": [
+            "BJ1",
+            "BJ2"
+          ],
+          "value": "Allowed, by the article\u2019s statement that Double Deck has the same rules as Single Deck."
+        },
+        "doubling_rules": {
+          "source_ids": [
+            "BJ1",
+            "BJ2"
+          ],
+          "value": "Double on any two cards, by the article\u2019s statement that Double Deck has the same rules as Single Deck."
+        },
+        "game": "Double Deck Blackjack",
+        "insurance": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "number_of_decks": {
+          "source_ids": [
+            "BJ1"
+          ],
+          "value": "2 decks"
+        },
+        "number_of_splits": {
+          "source_ids": [
+            "BJ1"
+          ],
+          "value": "Split once per round"
+        },
+        "split_aces": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "surrender": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        }
+      },
+      {
+        "blackjack_payout": {
+          "source_ids": [
+            "BJ3"
+          ],
+          "value": "3:2"
+        },
+        "dealer_peek_or_no_hole_card": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "dealer_soft_17": {
+          "source_ids": [
+            "BJ2"
+          ],
+          "value": "Dealer hits soft 17"
+        },
+        "double_after_split": {
+          "source_ids": [
+            "BJ2"
+          ],
+          "value": "Allowed"
+        },
+        "doubling_rules": {
+          "source_ids": [
+            "BJ2"
+          ],
+          "value": "Double on any two cards"
+        },
+        "game": "Classic Single Deck Blackjack",
+        "insurance": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "number_of_decks": {
+          "source_ids": [
+            "BJ1"
+          ],
+          "value": "1 deck"
+        },
+        "number_of_splits": {
+          "source_ids": [
+            "BJ3"
+          ],
+          "value": "The Classic format allows splitting up to three hands."
+        },
+        "split_aces": {
+          "source_ids": [
+            "BJ3"
+          ],
+          "value": "Split Aces receive one card only"
+        },
+        "surrender": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        }
+      },
+      {
+        "blackjack_payout": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "dealer_peek_or_no_hole_card": {
+          "source_ids": [
+            "BJ1"
+          ],
+          "value": "No second dealer card until after the player has made their decisions; this is a no-hole-card procedure as described on the page."
+        },
+        "dealer_soft_17": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "double_after_split": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "doubling_rules": {
+          "source_ids": [
+            "BJ1"
+          ],
+          "value": "Doubling is among the decisions made before the dealer receives a second card; eligible hands and other restrictions are NOT FOUND."
+        },
+        "game": "European Blackjack",
+        "insurance": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "number_of_decks": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "number_of_splits": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "split_aces": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "surrender": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        }
+      },
+      {
+        "blackjack_payout": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "dealer_peek_or_no_hole_card": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "dealer_soft_17": {
+          "source_ids": [
+            "BJ4"
+          ],
+          "value": "Dealer hits soft 17"
+        },
+        "double_after_split": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "doubling_rules": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "game": "Perfect Pairs Blackjack",
+        "insurance": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "number_of_decks": {
+          "source_ids": [
+            "BJ4"
+          ],
+          "value": "6 decks"
+        },
+        "number_of_splits": {
+          "source_ids": [
+            "BJ4"
+          ],
+          "value": "Up to three hands"
+        },
+        "split_aces": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "surrender": {
+          "source_ids": [
+            "BJ4"
+          ],
+          "value": "Allowed; surrender timing is NOT FOUND."
+        }
+      },
+      {
+        "blackjack_payout": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "dealer_peek_or_no_hole_card": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "dealer_soft_17": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "double_after_split": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "doubling_rules": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "game": "Zappit Blackjack",
+        "insurance": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "number_of_decks": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "number_of_splits": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "split_aces": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "surrender": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        }
+      },
+      {
+        "blackjack_payout": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "dealer_peek_or_no_hole_card": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "dealer_soft_17": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "double_after_split": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "doubling_rules": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "game": "Live Casino Blackjack",
+        "insurance": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "number_of_decks": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "number_of_splits": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "shuffle_method_or_penetration": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "split_aces": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        },
+        "surrender": {
+          "source_ids": [],
+          "value": "NOT FOUND"
+        }
+      }
+    ],
+    "roulette": {
+      "en_prison": {
+        "source_ids": [],
+        "value": "NOT FOUND"
+      },
+      "flash_roulette": {
+        "source_ids": [
+          "R3"
+        ],
+        "value": "The published Flash Roulette article describes a European-style wheel with 37 numbers (0-36)."
+      },
+      "la_partage": {
+        "source_ids": [],
+        "value": "NOT FOUND"
+      },
+      "listed_games": {
+        "source_ids": [
+          "R1"
+        ],
+        "value": [
+          "Classic American Roulette",
+          "Classic European Roulette",
+          "American Roulette",
+          "European Roulette",
+          "Live Dealer Roulette"
+        ]
+      },
+      "live_wheel_availability": {
+        "source_ids": [
+          "BJ5"
+        ],
+        "value": "American and European roulette are both stated to be available live."
+      },
+      "wheel_types": {
+        "source_ids": [
+          "R2"
+        ],
+        "value": "American Roulette: 38 slots with 0 and 00. European Roulette: 37 slots with a single 0."
+      }
+    },
+    "scope_note": "The Bovada Help Center entry redirected to a regional login page, so no login was attempted. Findings below use publicly readable Bovada Hub pages only. NOT FOUND means the requested rule was not stated in the accessible public Bovada materials reviewed. Each source_ids value points to the exact URL and quote in sources.",
+    "sources": [
+      {
+        "id": "BJ1",
+        "quote": "Make Blackjack \u2013 In this card game, making a Blackjack means finishing precisely on 21. If you can pull this off with only your first two cards, you\u2019ll earn a 3:2 payout.\nAs Bovada Casino\u2019s primary version of Blackjack, this card game is played using a total of six decks.\nThe decks are shuffled after every hand, just like at a live casino.\nYou can also boost your winnings by doubling down and splitting whenever the opportunity should present itself.\nWith a huge max bet of $2,500 and the ability to play up to three hands at once, you can win a huge payday playing Blackjack.\nJust as the name suggests, Single Deck Blackjack takes things back to the basics by playing with just a single deck of cards that gets shuffled after every hand.\nFeaturing two decks in the shoe, this version of the famous casino game provides yet another option for online Blackjack players at Bovada Casino.\nThis game includes all of the same rules as Single Deck Blackjack, but has twice as many aces and face cards in the deck.\nJust remember this game only allows you to split once per round and features a maximum bet of $250 per hand.\nClassic Single Deck Blackjack allows Bovada players to combine the excitement of Single Deck Blackjack with the realistic gameplay of Classic Blackjack. The rules and betting limits are the same as Single Deck Blackjack so there are no surprises, but you can enjoy the feeling of sitting at a virtual table and handling your virtual chips.\nThe European version of this famous table game functions similarly to the standard version of the game, however there is one key difference \u2013 in the European version, the dealer doesn\u2019t receive a second card until after the player has made their decision, including doubling and splitting.\nWith every other aspect of the game unchanged, European Blackjack can be a good choice for players looking to switch things up on the felt.\nThis innovative game allows you to play Blackjack online against real dealers that are streaming live from a studio, letting you interact with a real live casino.",
+        "url": "https://hub.bovada.lv/casino/blackjack/types-of-online-blackjack-games-to-play/"
+      },
+      {
+        "id": "BJ2",
+        "quote": "At Bovada, you can double any two cards when you play Single Deck Blackjack, and the Dealer must hit on Soft 17.\nIn both Single Deck Blackjack variants at Bovada, you\u2019re allowed to double on any two cards you\u2019re dealt \u2013 and you can double down after a split.\nIn both the Classic and New versions, the dealer must hit on soft 17.",
+        "url": "https://hub.bovada.lv/casino/blackjack/a-guide-to-double-down-in-single-deck-blackjack/"
+      },
+      {
+        "id": "BJ3",
+        "quote": "When you play Single Deck Blackjack at Bovada using the new format, you may split up to two hands; with the Classic format, you get to split up to three hands.\nSplit Aces receive only one card in both versions.\nIn short, you get improved functionality when you play The New Blackjack at Bovada, but if you\u2019re playing Single Deck Blackjack using the new layout, you lose the ability to split up to three times. Otherwise, the same Blackjack rules apply when it comes to the Dealer hitting on soft 17, Blackjacks paying out at 3:2, and so on.",
+        "url": "https://hub.bovada.lv/casino/slots/classic-blackjack-vs-the-new-blackjack/"
+      },
+      {
+        "id": "BJ4",
+        "quote": "If you already know how to play Blackjack, then Perfect Pairs will be easy for you to grasp. The blackjack portion of the game remains the same; just like Classic Blackjack, there are six decks in the shoe, the dealer hits on soft 17, you can split up to three hands, and surrenders are allowed.",
+        "url": "https://hub.bovada.lv/casino/blackjack/an-introduction-to-perfect-pairs-blackjack/"
+      },
+      {
+        "id": "BJ5",
+        "quote": "When you play live Casino online, you can watch every action of the dealer, from shuffling cards to spinning the roulette wheel. Even though RNG games are 100% trustworthy and are designed to keep online casino games safe and fully randomized, a live dealer helps some players trust the fairness of the game even more.\nBoth varieties of roulette \u2013 American and European \u2013 are available live, and certain Blackjack tables offer Early Payout as an option.",
+        "url": "https://hub.bovada.lv/casino/table-games/live-dealer-games-what-you-need-to-know/"
+      },
+      {
+        "id": "BC1",
+        "quote": "Super 6 is a fun and exciting table game featuring plenty of betting options. The game is very similar to baccarat, but there are a few key differences that make it all its own.\nThe game is played with a six-deck shoe and the Live Casino feature allows you to see the actual cards being dealt right before your eyes.\nPlayer bets pay out even money, as do Banker bets (minus a five percent commission), while a Tie bet pays out 8:1. The primary difference with Super 6 is this \u2013 if the Banker wins with a total of 6, the payout is 1:2 (or in other words, you\u2019ll win half of what you bet).\nAnother popular side bet in Live Casino Super 6 is the Pairs wager. This bet wins if the first two cards dealt to the Player or the Banker combine to make a pair. For example, if the first two cards dealt are 10-10 or K-K, the side bet is deemed a winner. This side bet also has a generous payout at 11:1. There\u2019s also the Either Pair side bet option, which works the same way but applies to both the Banker and Dealer\u2019s hand, and comes with 5:1 payout odds.",
+        "url": "https://hub.bovada.lv/casino/table-games/live-dealer-super-6-guide/"
+      },
+      {
+        "id": "R1",
+        "quote": "With tons of roulette games available, you will be sure to find what you are looking for:\nClassic American Roulette\nClassic European Roulette\nAmerican Roulette\nEuropean Roulette\nLive Dealer Roulette",
+        "url": "https://hub.bovada.lv/casino/roulette/roulette-payout-calculator/"
+      },
+      {
+        "id": "R2",
+        "quote": "Bovada Casino has both American Roulette and European Roulette tables available. While both games are similar, there\u2019s a distinct difference between the two types of online roulette; European Roulette features a wheel with 37 slots and only a single zero (0), while American Roulette uses a wheel with 38 slots with two zeros (0, 00).",
+        "url": "https://hub.bovada.lv/casino/roulette/you-need-to-try-these-roulette-strategies/"
+      },
+      {
+        "id": "R3",
+        "quote": "Flash Roulette at Bovada uses a European-style wheel with 37 numbers (0-36) and allows for both inside and outside bets, similar to traditional roulette.",
+        "url": "https://hub.bovada.lv/casino/roulette/guide-to-mastering-flash-roulette-tips-and-strategies/"
+      }
+    ]
+  },
+  "cost_usd": "0.263485",
+  "problems": [],
+  "cancelled_by_us": false
+}

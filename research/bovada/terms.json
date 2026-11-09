@@ -1,0 +1,249 @@
+{
+  "run_id": "06bcde79-cd60-4a18-ac5f-bd5f19e730ff",
+  "status": "completed",
+  "ok": true,
+  "result": "{\n  \"terms_version\": \"Terms of Service page: Latest update: January 3rd, 2024.\",\n  \"clauses\": [\n    {\n      \"topic\": \"External player-assistance programs\",\n      \"section\": \"6.3 No Player Assistance Programs\",\n      \"finding\": \"External player-assistance programs designed to give players an unfair advantage are prohibited. The terms define these to include computer software and non-software databases or profiles, such as websites and subscription services, and describe certain access to information about other players as unfair.\",\n      \"consequence\": \"Bovada reserves the right to close accounts and void any winnings in them if it determines, in its reasonable discretion, that an EPA Program was used.\",\n      \"source_ids\": [\"tos-63-ban\", \"tos-63-definition\", \"tos-63-consequence\"]\n    },\n    {\n      \"topic\": \"Bots and automated play\",\n      \"section\": \"6.4 \\\"Bots\\\" Prohibited\",\n      \"finding\": \"Actions on the Website must be performed by players through the supplied user interface; robot software or programs designed to simulate real-player play are subject to detection and prevention.\",\n      \"consequence\": \"Accounts associated with such activity may be reviewed and terminated. If Bovada determines an account is employing such software, it will be disabled and all balances, including deposits and winnings, forfeited.\",\n      \"source_ids\": [\"tos-64-interface\", \"tos-64-detection\", \"tos-64-consequence\"]\n    },\n    {\n      \"topic\": \"VPNs, proxies, and third-party play\",\n      \"section\": \"6.2 Fraudulent Activity\",\n      \"finding\": \"Use of a VPN, proxy, or similar service to mask or manipulate location, and making bets or poker plays through or on behalf of a third party, are listed as examples of fraudulent, unlawful, dishonest, or improper activity.\",\n      \"consequence\": \"Bovada reserves the right to terminate or deny account access; all account balances, including deposits and winnings, shall be forfeited.\",\n      \"source_ids\": [\"tos-62\"]\n    },\n    {\n      \"topic\": \"Collusion\",\n      \"section\": \"6.5 Collusion\",\n      \"finding\": \"Gaining or attempting to gain an advantage by trading card information or colluding with other players is prohibited. Listed examples include sharing card information, chip dumping, discussing a hand during play in or outside the client, multiple players using one account, soft playing, and chip transferring.\",\n      \"consequence\": \"Players may be permanently banned; accounts may be disabled and all balances, including deposits and winnings, forfeited.\",\n      \"source_ids\": [\"tos-65-ban\", \"tos-65-examples\", \"tos-65-consequence\"]\n    },\n    {\n      \"topic\": \"Inter-player transfers\",\n      \"section\": \"6.6 Inter-Player Transfers Prohibited\",\n      \"finding\": \"Money transfers between player accounts are not permitted; poker chip dumping is specifically mentioned.\",\n      \"consequence\": \"A transfer may be reversed, and accounts may be closed with all balances, including deposits and winnings, forfeited.\",\n      \"source_ids\": [\"tos-66\"]\n    },\n    {\n      \"topic\": \"Betting syndicates and shared accounts\",\n      \"section\": \"6.7 \\\"Betting Syndicates\\\"; 3.2 Single Account Access\",\n      \"finding\": \"Players working together in any fashion for eCash winnings, activity bonuses, or otherwise may have only one account in total; redundant accounts may be consolidated. Section 3.2 also says not to let another person access the Website or Software through your account without Bovada's express permission.\",\n      \"consequence\": \"Bovada may charge an administration fee, refuse payouts, reverse wagering transactions in redundant accounts, and forfeit the principal of wagers placed to defraud or exploit the house. Multiple accounts held by one person are subject to immediate closure, and funds gained from them may be seized.\",\n      \"source_ids\": [\"tos-67-syndicate\", \"tos-67-sanctions\", \"tos-67-forfeiture\", \"tos-32\"]\n    },\n    {\n      \"topic\": \"Professional play, bonus abuse, and wager-limit abuse\",\n      \"section\": \"6.8 Abuse of Bonus Programs and Wager Limits\",\n      \"finding\": \"The terms say bonus programs are intended for recreational bettors only. They say professional players or players Bovada considers to be abusing the bonus system or wager limits may face sanctions; examples include using parlay limits to circumvent singles limits.\",\n      \"consequence\": \"Wagers may be voided, bonuses revoked, and further sanctions applied, including increased rollover or loss of bonus privileges for the offending and linked accounts.\",\n      \"source_ids\": [\"tos-68-abuse\", \"tos-68-sanctions\"]\n    },\n    {\n      \"topic\": \"Exploiting software or hardware vulnerabilities\",\n      \"section\": \"6.9 Abuse of System Vulnerability\",\n      \"finding\": \"Exploiting a hardware or software error, malfunction, bug, or other vulnerability is covered.\",\n      \"consequence\": \"Bovada says it will immediately close the account and forfeit all balances, including deposits and winnings; it also reserves the right to pursue civil proceedings and report the activity to authorities.\",\n      \"source_ids\": [\"tos-69\"]\n    },\n    {\n      \"topic\": \"Winnings from errors\",\n      \"section\": \"6.11 Malfunction, System or Human Error\",\n      \"finding\": \"Bovada reserves the right to void winnings obtained as a result of hardware or software error, malfunction, or human error; wagers are void in the event of such malfunction or error.\",\n      \"source_ids\": [\"tos-611\"]\n    },\n    {\n      \"topic\": \"Poker communications during play\",\n      \"section\": \"6.13 Communications During Play\",\n      \"finding\": \"Players and observers may not discuss a poker hand before it is completed; discussing discarded cards or hand possibilities is not allowed.\",\n      \"source_ids\": [\"tos-613\"]\n    },\n    {\n      \"topic\": \"Explicit card-counting, advantage-play, device, or blanket third-party-app rule\",\n      \"finding\": \"NOT FOUND - I found no explicit clause naming card counting or \u201cadvantage play,\u201d no separate gameplay rule naming physical devices, and no blanket ban on every third-party application in the public Terms of Service and relevant Help Center material reviewed. The express software rule found is the narrower EPA Program rule in Section 6.3; this does not establish that card counting itself is allowed or prohibited.\",\n      \"source_ids\": [\"tos-not-found\", \"poker-help-not-found\", \"casino-help-not-found\", \"live-help-not-found\"]\n    }\n  ],\n  \"sources\": [\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"Terms of Service (page header)\",\n      \"quote\": \"Latest update: January 3rd, 2024\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.3 No Player Assistance Programs\",\n      \"quote\": \"Use by players of external player assistance programs (\\\"EPA Programs\\\") which are designed to provide players with an unfair advantage over their opponents are expressly prohibited.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.3 No Player Assistance Programs\",\n      \"quote\": \"We define EPA Programs as including computer software and non-software-based databases or profiles (e.g., web sites and subscription services) and we consider access to or the ability to gather data or information on other players by any means that would not be accessible via their own first-hand experience (i.e. observation of game play) to be \\\"unfair\\\".\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.3 No Player Assistance Programs\",\n      \"quote\": \"We reserve the right to close Accounts and void any and all winnings in such Accounts if we establish, in our reasonable discretion, the use of an EPA Program.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.4 \\\"Bots\\\" Prohibited\",\n      \"quote\": \"All actions on the Website must be executed by players via the supplied user interface.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.4 \\\"Bots\\\" Prohibited\",\n      \"quote\": \"We will take any measures necessary to ensure that all robot software or programs designed to simulate real player play will be detected and prevented from accessing the Website.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.4 \\\"Bots\\\" Prohibited\",\n      \"quote\": \"If, in our reasonable discretion, we determine that an Account is employing such software, the Account will be disabled and all Account balances (including both deposits and any winnings) shall be forfeited.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.2 Fraudulent Activity\",\n      \"quote\": \"If, in our reasonable discretion, we determine that a player has engaged in fraudulent, unlawful, dishonest or improper activity (including, without limitation, the usage of a VPN, proxy or similar service that masks or manipulates the identification of your real location, or by otherwise providing false or misleading information, or by making bets, wagers or poker play through a third party or on behalf of a third party) we reserve the right to immediately terminate or deny a player access to their Account. In such event, all Account balances (including both deposits and any winnings) shall be forfeited.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.5 Collusion\",\n      \"quote\": \"Any players who gain, or attempt to gain an advantage by trading information about their cards, or attempt to take any unfair advantage by colluding with other players will be permanently banned from the Website.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.5 Collusion\",\n      \"quote\": \"Collusion includes, without limitation: sharing information about their cards, chip dumping, discussing a hand during play (both in client chat or externally), multiple players using a single Account, soft playing and chip transferring.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.5 Collusion\",\n      \"quote\": \"If, in our reasonable discretion, we determine that such activity is occurring, the Accounts may, in our sole and absolute discretion, be disabled and all Account balances (including both deposits and any winnings) shall be forfeited.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.6 Inter-Player Transfers Prohibited\",\n      \"quote\": \"We do not permit or condone money transfers between player accounts. Players found to be transferring money (including by way of so-called poker \\\"chip dumping\\\") may have the transfer reversed in our sole and absolute discretion. In such event, in our discretion, such Accounts may be closed and all Account balances (including both deposits and any winnings) may be forfeited.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.7 \\\"Betting Syndicates\\\"\",\n      \"quote\": \"A player or group of players working together in any fashion (also known as a \\\"syndicate\\\"), to receive either eCash winnings or activity bonuses or otherwise, may only have one Account in total, and any redundant Accounts will be consolidated into the one Account.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.7 \\\"Betting Syndicates\\\"\",\n      \"quote\": \"An administration fee may be charged and payouts refused for each redundant Account, in our sole discretion. All wagering transactions in redundant Accounts are subject to reversal at our sole discretion.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.7 \\\"Betting Syndicates\\\"\",\n      \"quote\": \"We also reserve the right to forfeit the principal of any wager placed in an attempt to defraud or exploit the house of any bonus and/or non-bonus monies, whether a player does this on their own or in collusion with other players or other sportsbooks.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"3.2 Single Account Access\",\n      \"quote\": \"You are permitted to open only one (1) Account. Only one account is allowed per household. Multiple accounts held by the same individual are subject to immediate closure and we reserve the right to seize any funds gained as a result of holding multiple accounts. Furthermore you shall not permit another person to access the Website or Software via your account without the express permission of Bovada.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.8 Abuse of Bonus Programs and Wager Limits\",\n      \"quote\": \"Bonus programs are intended for recreational bettors only. Professional players or players considered, in our sole discretion, to be abusing the bonus system or wager limits by any means may have wagers voided, bonuses revoked and be subject to further sanctions.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.8 Abuse of Bonus Programs and Wager Limits\",\n      \"quote\": \"Sanctions may be in the form of increased rollover requirements or loss of bonus privileges altogether for the offending Account as well as any linked Accounts.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.9 Abuse of System Vulnerability\",\n      \"quote\": \"If, in our reasonable discretion, we determine that an Account sought to or actually did exploit any hardware or software error, malfunction, \\\"bug\\\" or other vulnerability, we shall immediately close such Account and all Account balances, including both deposits and any winnings, shall be immediately forfeited.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.11 Malfunction, System or Human Error\",\n      \"quote\": \"We reserve the right to void any winnings that were obtained as a result of hardware/software error, malfunction or human error. In the event of any such malfunction or error all wagers are void.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"6.13 Communications During Play\",\n      \"quote\": \"Players and observers may not discuss a poker hand until the hand is completed. Discussing cards discarded or hand possibilities, real or not, is not allowed.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/terms-of-service\",\n      \"heading\": \"Public Terms of Service absence check\",\n      \"quote\": \"NOT FOUND - no explicit clause naming card counting or \\\"advantage play,\\\" no separate physical-device gameplay rule, and no blanket ban on all third-party applications was found in the page.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/help/poker-faq\",\n      \"heading\": \"Poker Help Center absence check\",\n      \"quote\": \"NOT FOUND - no additional public poker-help rule naming card counting, advantage play, third-party gameplay tools, or physical devices was found in the poker FAQ and linked public articles reviewed.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/help/casino-faq\",\n      \"heading\": \"Casino Help Center absence check\",\n      \"quote\": \"NOT FOUND - no additional public casino-help rule naming card counting, advantage play, third-party gameplay tools, or physical devices was found in the casino FAQ and linked public articles reviewed.\"\n    },\n    {\n      \"url\": \"https://www.bovada.lv/help/live-casino-faq\",\n      \"heading\": \"Live Casino Help Center absence check\",\n      \"quote\": \"NOT FOUND - no additional public live-casino-help rule naming card counting, advantage play, third-party gameplay tools, or physical devices was found in the live casino FAQ and linked public articles reviewed.\"\n    }\n  ]\n}",
+  "output": {
+    "clauses": [
+      {
+        "consequence": "Bovada reserves the right to close accounts and void any winnings in them if it determines, in its reasonable discretion, that an EPA Program was used.",
+        "finding": "External player-assistance programs designed to give players an unfair advantage are prohibited. The terms define these to include computer software and non-software databases or profiles, such as websites and subscription services, and describe certain access to information about other players as unfair.",
+        "section": "6.3 No Player Assistance Programs",
+        "source_ids": [
+          "tos-63-ban",
+          "tos-63-definition",
+          "tos-63-consequence"
+        ],
+        "topic": "External player-assistance programs"
+      },
+      {
+        "consequence": "Accounts associated with such activity may be reviewed and terminated. If Bovada determines an account is employing such software, it will be disabled and all balances, including deposits and winnings, forfeited.",
+        "finding": "Actions on the Website must be performed by players through the supplied user interface; robot software or programs designed to simulate real-player play are subject to detection and prevention.",
+        "section": "6.4 \"Bots\" Prohibited",
+        "source_ids": [
+          "tos-64-interface",
+          "tos-64-detection",
+          "tos-64-consequence"
+        ],
+        "topic": "Bots and automated play"
+      },
+      {
+        "consequence": "Bovada reserves the right to terminate or deny account access; all account balances, including deposits and winnings, shall be forfeited.",
+        "finding": "Use of a VPN, proxy, or similar service to mask or manipulate location, and making bets or poker plays through or on behalf of a third party, are listed as examples of fraudulent, unlawful, dishonest, or improper activity.",
+        "section": "6.2 Fraudulent Activity",
+        "source_ids": [
+          "tos-62"
+        ],
+        "topic": "VPNs, proxies, and third-party play"
+      },
+      {
+        "consequence": "Players may be permanently banned; accounts may be disabled and all balances, including deposits and winnings, forfeited.",
+        "finding": "Gaining or attempting to gain an advantage by trading card information or colluding with other players is prohibited. Listed examples include sharing card information, chip dumping, discussing a hand during play in or outside the client, multiple players using one account, soft playing, and chip transferring.",
+        "section": "6.5 Collusion",
+        "source_ids": [
+          "tos-65-ban",
+          "tos-65-examples",
+          "tos-65-consequence"
+        ],
+        "topic": "Collusion"
+      },
+      {
+        "consequence": "A transfer may be reversed, and accounts may be closed with all balances, including deposits and winnings, forfeited.",
+        "finding": "Money transfers between player accounts are not permitted; poker chip dumping is specifically mentioned.",
+        "section": "6.6 Inter-Player Transfers Prohibited",
+        "source_ids": [
+          "tos-66"
+        ],
+        "topic": "Inter-player transfers"
+      },
+      {
+        "consequence": "Bovada may charge an administration fee, refuse payouts, reverse wagering transactions in redundant accounts, and forfeit the principal of wagers placed to defraud or exploit the house. Multiple accounts held by one person are subject to immediate closure, and funds gained from them may be seized.",
+        "finding": "Players working together in any fashion for eCash winnings, activity bonuses, or otherwise may have only one account in total; redundant accounts may be consolidated. Section 3.2 also says not to let another person access the Website or Software through your account without Bovada's express permission.",
+        "section": "6.7 \"Betting Syndicates\"; 3.2 Single Account Access",
+        "source_ids": [
+          "tos-67-syndicate",
+          "tos-67-sanctions",
+          "tos-67-forfeiture",
+          "tos-32"
+        ],
+        "topic": "Betting syndicates and shared accounts"
+      },
+      {
+        "consequence": "Wagers may be voided, bonuses revoked, and further sanctions applied, including increased rollover or loss of bonus privileges for the offending and linked accounts.",
+        "finding": "The terms say bonus programs are intended for recreational bettors only. They say professional players or players Bovada considers to be abusing the bonus system or wager limits may face sanctions; examples include using parlay limits to circumvent singles limits.",
+        "section": "6.8 Abuse of Bonus Programs and Wager Limits",
+        "source_ids": [
+          "tos-68-abuse",
+          "tos-68-sanctions"
+        ],
+        "topic": "Professional play, bonus abuse, and wager-limit abuse"
+      },
+      {
+        "consequence": "Bovada says it will immediately close the account and forfeit all balances, including deposits and winnings; it also reserves the right to pursue civil proceedings and report the activity to authorities.",
+        "finding": "Exploiting a hardware or software error, malfunction, bug, or other vulnerability is covered.",
+        "section": "6.9 Abuse of System Vulnerability",
+        "source_ids": [
+          "tos-69"
+        ],
+        "topic": "Exploiting software or hardware vulnerabilities"
+      },
+      {
+        "finding": "Bovada reserves the right to void winnings obtained as a result of hardware or software error, malfunction, or human error; wagers are void in the event of such malfunction or error.",
+        "section": "6.11 Malfunction, System or Human Error",
+        "source_ids": [
+          "tos-611"
+        ],
+        "topic": "Winnings from errors"
+      },
+      {
+        "finding": "Players and observers may not discuss a poker hand before it is completed; discussing discarded cards or hand possibilities is not allowed.",
+        "section": "6.13 Communications During Play",
+        "source_ids": [
+          "tos-613"
+        ],
+        "topic": "Poker communications during play"
+      },
+      {
+        "finding": "NOT FOUND - I found no explicit clause naming card counting or \u201cadvantage play,\u201d no separate gameplay rule naming physical devices, and no blanket ban on every third-party application in the public Terms of Service and relevant Help Center material reviewed. The express software rule found is the narrower EPA Program rule in Section 6.3; this does not establish that card counting itself is allowed or prohibited.",
+        "source_ids": [
+          "tos-not-found",
+          "poker-help-not-found",
+          "casino-help-not-found",
+          "live-help-not-found"
+        ],
+        "topic": "Explicit card-counting, advantage-play, device, or blanket third-party-app rule"
+      }
+    ],
+    "sources": [
+      {
+        "heading": "Terms of Service (page header)",
+        "quote": "Latest update: January 3rd, 2024",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.3 No Player Assistance Programs",
+        "quote": "Use by players of external player assistance programs (\"EPA Programs\") which are designed to provide players with an unfair advantage over their opponents are expressly prohibited.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.3 No Player Assistance Programs",
+        "quote": "We define EPA Programs as including computer software and non-software-based databases or profiles (e.g., web sites and subscription services) and we consider access to or the ability to gather data or information on other players by any means that would not be accessible via their own first-hand experience (i.e. observation of game play) to be \"unfair\".",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.3 No Player Assistance Programs",
+        "quote": "We reserve the right to close Accounts and void any and all winnings in such Accounts if we establish, in our reasonable discretion, the use of an EPA Program.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.4 \"Bots\" Prohibited",
+        "quote": "All actions on the Website must be executed by players via the supplied user interface.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.4 \"Bots\" Prohibited",
+        "quote": "We will take any measures necessary to ensure that all robot software or programs designed to simulate real player play will be detected and prevented from accessing the Website.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.4 \"Bots\" Prohibited",
+        "quote": "If, in our reasonable discretion, we determine that an Account is employing such software, the Account will be disabled and all Account balances (including both deposits and any winnings) shall be forfeited.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.2 Fraudulent Activity",
+        "quote": "If, in our reasonable discretion, we determine that a player has engaged in fraudulent, unlawful, dishonest or improper activity (including, without limitation, the usage of a VPN, proxy or similar service that masks or manipulates the identification of your real location, or by otherwise providing false or misleading information, or by making bets, wagers or poker play through a third party or on behalf of a third party) we reserve the right to immediately terminate or deny a player access to their Account. In such event, all Account balances (including both deposits and any winnings) shall be forfeited.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.5 Collusion",
+        "quote": "Any players who gain, or attempt to gain an advantage by trading information about their cards, or attempt to take any unfair advantage by colluding with other players will be permanently banned from the Website.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.5 Collusion",
+        "quote": "Collusion includes, without limitation: sharing information about their cards, chip dumping, discussing a hand during play (both in client chat or externally), multiple players using a single Account, soft playing and chip transferring.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.5 Collusion",
+        "quote": "If, in our reasonable discretion, we determine that such activity is occurring, the Accounts may, in our sole and absolute discretion, be disabled and all Account balances (including both deposits and any winnings) shall be forfeited.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.6 Inter-Player Transfers Prohibited",
+        "quote": "We do not permit or condone money transfers between player accounts. Players found to be transferring money (including by way of so-called poker \"chip dumping\") may have the transfer reversed in our sole and absolute discretion. In such event, in our discretion, such Accounts may be closed and all Account balances (including both deposits and any winnings) may be forfeited.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.7 \"Betting Syndicates\"",
+        "quote": "A player or group of players working together in any fashion (also known as a \"syndicate\"), to receive either eCash winnings or activity bonuses or otherwise, may only have one Account in total, and any redundant Accounts will be consolidated into the one Account.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.7 \"Betting Syndicates\"",
+        "quote": "An administration fee may be charged and payouts refused for each redundant Account, in our sole discretion. All wagering transactions in redundant Accounts are subject to reversal at our sole discretion.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.7 \"Betting Syndicates\"",
+        "quote": "We also reserve the right to forfeit the principal of any wager placed in an attempt to defraud or exploit the house of any bonus and/or non-bonus monies, whether a player does this on their own or in collusion with other players or other sportsbooks.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "3.2 Single Account Access",
+        "quote": "You are permitted to open only one (1) Account. Only one account is allowed per household. Multiple accounts held by the same individual are subject to immediate closure and we reserve the right to seize any funds gained as a result of holding multiple accounts. Furthermore you shall not permit another person to access the Website or Software via your account without the express permission of Bovada.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.8 Abuse of Bonus Programs and Wager Limits",
+        "quote": "Bonus programs are intended for recreational bettors only. Professional players or players considered, in our sole discretion, to be abusing the bonus system or wager limits by any means may have wagers voided, bonuses revoked and be subject to further sanctions.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.8 Abuse of Bonus Programs and Wager Limits",
+        "quote": "Sanctions may be in the form of increased rollover requirements or loss of bonus privileges altogether for the offending Account as well as any linked Accounts.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.9 Abuse of System Vulnerability",
+        "quote": "If, in our reasonable discretion, we determine that an Account sought to or actually did exploit any hardware or software error, malfunction, \"bug\" or other vulnerability, we shall immediately close such Account and all Account balances, including both deposits and any winnings, shall be immediately forfeited.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.11 Malfunction, System or Human Error",
+        "quote": "We reserve the right to void any winnings that were obtained as a result of hardware/software error, malfunction or human error. In the event of any such malfunction or error all wagers are void.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "6.13 Communications During Play",
+        "quote": "Players and observers may not discuss a poker hand until the hand is completed. Discussing cards discarded or hand possibilities, real or not, is not allowed.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "Public Terms of Service absence check",
+        "quote": "NOT FOUND - no explicit clause naming card counting or \"advantage play,\" no separate physical-device gameplay rule, and no blanket ban on all third-party applications was found in the page.",
+        "url": "https://www.bovada.lv/terms-of-service"
+      },
+      {
+        "heading": "Poker Help Center absence check",
+        "quote": "NOT FOUND - no additional public poker-help rule naming card counting, advantage play, third-party gameplay tools, or physical devices was found in the poker FAQ and linked public articles reviewed.",
+        "url": "https://www.bovada.lv/help/poker-faq"
+      },
+      {
+        "heading": "Casino Help Center absence check",
+        "quote": "NOT FOUND - no additional public casino-help rule naming card counting, advantage play, third-party gameplay tools, or physical devices was found in the casino FAQ and linked public articles reviewed.",
+        "url": "https://www.bovada.lv/help/casino-faq"
+      },
+      {
+        "heading": "Live Casino Help Center absence check",
+        "quote": "NOT FOUND - no additional public live-casino-help rule naming card counting, advantage play, third-party gameplay tools, or physical devices was found in the live casino FAQ and linked public articles reviewed.",
+        "url": "https://www.bovada.lv/help/live-casino-faq"
+      }
+    ],
+    "terms_version": "Terms of Service page: Latest update: January 3rd, 2024."
+  },
+  "cost_usd": "0.092573",
+  "problems": [],
+  "cancelled_by_us": false
+}

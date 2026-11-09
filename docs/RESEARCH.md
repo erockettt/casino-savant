@@ -22,6 +22,8 @@ Labels: **PROVEN MATHEMATICALLY** · **EMPIRICALLY SUPPORTED** · **HYPOTHESIS**
 | F13 | Illustrious 18 / Fab 4 Hi-Lo indices | EMPIRICALLY SUPPORTED (literature); **not re-derived here** | Schlesinger, *Blackjack Attack* |
 | F14 | Extreme baccarat compositions can make a bet positive (e.g. pairs) | PROVEN for the composition; **operational value INCONCLUSIVE** (rare, late in the shoe, needs exact tracking) | `test_baccarat_card_removal_can_flip_sign_in_extreme_shoes` |
 | F16 | Live-dealer 8D shoes are beatable only by sitting out negative counts, with modest edges and long horizons | EMPIRICALLY SUPPORTED (simulation, template rules) | LIVE_DEALER_STUDY.md |
+| F17 | Bovada RNG blackjack is reshuffled every hand; Classic is 6D H17 3:2 split-to-3 with surrender; Single Deck is 1D H17 DOA DAS 3:2 | EMPIRICALLY SUPPORTED (Bovada public pages, quotes re-verified 2026-11-09) | research/bovada/game_rules.json; BOVADA.md |
+| F18 | Bovada ToS §6.3 bans external player-assistance software; card counting is not mentioned | PROVEN (primary source text, re-verified 2026-11-09) | research/bovada/terms.json; BOVADA.md |
 | F15 | Wheel bias could create a roulette edge | HYPOTHESIS. It needs a wheel-specific dataset with enough power to detect a bias larger than the house edge (see Q4) | — |
 
 ## Source register
@@ -37,6 +39,9 @@ Labels: **PROVEN MATHEMATICALLY** · **EMPIRICALLY SUPPORTED** · **HYPOTHESIS**
 | [UKGC RTS 16 – third-party software](https://www.gamblingcommission.gov.uk/standards/remote-gambling-and-software-technical-standards/rts-16-use-of-third-party-software) | Regulatory norm: operators should state which software is permitted | 2026-11-09 |
 | [CardPlayer – Bovada alternatives](https://cardplayer.com/online-casinos/bovada-alternatives) | Bovada context (offshore operator) | 2026-11-09 |
 | [Casino.org – Bovada review](https://corg-worker-test.g7cloud.com/us/reviews/bovada-casino/) | Bovada context (offshore operator, no regulator for disputes) | 2026-11-09 |
+
+| [Bovada help hub – blackjack game types](https://hub.bovada.lv/casino/blackjack/types-of-online-blackjack-games-to-play/), [single-deck doubling](https://hub.bovada.lv/casino/blackjack/a-guide-to-double-down-in-single-deck-blackjack/), [Perfect Pairs](https://hub.bovada.lv/casino/blackjack/an-introduction-to-perfect-pairs-blackjack/), [roulette](https://hub.bovada.lv/casino/roulette/you-need-to-try-these-roulette-strategies/) | Bovada rule profiles (F17) | 2026-11-09 |
+| [Bovada Terms of Service](https://www.bovada.lv/terms-of-service) (updated 2024-01-03) | §6.3 / §6.4 (F18) | 2026-11-09 |
 
 ## Research queue (open questions)
 

@@ -95,14 +95,22 @@ def test_sim_reproducible():
 
 
 # --- Profiles (Bovada templates must be unverified)
-def test_bovada_templates_unverified_and_valid():
+def test_bovada_profiles_reflect_confirmed_rules():
     ps = ProfileStore().all()
-    bov = [p for p in ps.values() if p.venue == "Bovada"]
-    assert len(bov) >= 5
-    for p in bov:
-        assert not p.verified
+    bov = {k: p for k, p in ps.items() if p.venue == "Bovada"}
+    assert len(bov) >= 7
+    for p in bov.values():
         p.build_rules()
-    assert ps["bovada-bj-rng-classic"].build_rules().counting_meaningful is False
+        if p.game == "blackjack":
+            assert not p.verified  # peek / insurance / surrender timing are not published
+    classic = ps["bovada-bj-rng-classic"].build_rules()
+    assert classic.decks == 6 and classic.dealer_hits_soft_17 and classic.max_split_hands == 3
+    assert classic.surrender == "late" and classic.counting_meaningful is False
+    single = ps["bovada-bj-rng-single-deck"].build_rules()
+    assert single.decks == 1 and single.dealer_hits_soft_17 and single.double_after_split
+    assert ps["bovada-roulette-american"].verified          # only rule is the wheel, which Bovada confirms
+    assert "PARTLY CONFIRMED" in ps["bovada-bj-rng-classic"].status_banner()
+    assert "UNVERIFIED" in ps["bovada-bj-live"].status_banner()
 
 
 # --- API smoke
@@ -112,7 +120,7 @@ def test_api_end_to_end():
     assert r.status_code == 200 and r.json()["best"] == "SURRENDER"
     r = c.post("/api/blackjack/analyze", json={"player": "T 6", "dealer_up": "T", "profile_id": "bovada-bj-rng-classic",
                                                 "seen_cards": "2 3 4"})
-    assert "UNVERIFIED" in r.json()["profile"] and "ignored" in r.json()["shoe_source"]
+    assert "UNVERIFIED" in r.json()["profile"] and "ignored" in r.json()["shoe_source"]  # partly confirmed
     sid = c.post("/api/session", json={"profile_id": "reference-6d-s17"}).json()["session_id"]
     for slot, i, rank in [("player", 0, "T"), ("dealer", 0, "9"), ("player", 1, "6")]:
         assert c.post(f"/api/session/{sid}/observe", json={"slot": slot, "index": i, "rank": rank}).json()["accepted"]

@@ -36,6 +36,7 @@ class VenueProfile:
     source: str = "user-entered"
     delivery: str = "unknown"  # 'rng' | 'live_dealer' | 'land' | 'unknown'
     notes: list[str] = field(default_factory=list)
+    confirmed_fields: list[str] = field(default_factory=list)  # fields confirmed from a primary source
 
     def build_rules(self):
         if self.game == "blackjack":
@@ -49,6 +50,9 @@ class VenueProfile:
     def status_banner(self) -> str:
         if self.verified:
             return f"{self.venue} – {self.title}: rules VERIFIED ({self.source})."
+        if self.confirmed_fields:
+            return (f"{self.venue} – {self.title}: PARTLY CONFIRMED from {self.venue}'s public pages "
+                    f"({', '.join(self.confirmed_fields)}); other rules UNVERIFIED. Check the in-game rules screen.")
         return (f"{self.venue} – {self.title}: rules UNVERIFIED template. Check the table's rules screen and "
                 "correct any field before relying on the numbers.")
 
@@ -56,35 +60,77 @@ class VenueProfile:
         return self.__dict__.copy()
 
 
+HUB = "https://hub.bovada.lv/casino"
+BOVADA_CHECKED = "2026-11-09"
+SRC_TYPES = f"{HUB}/blackjack/types-of-online-blackjack-games-to-play/"
+SRC_SINGLE = f"{HUB}/blackjack/a-guide-to-double-down-in-single-deck-blackjack/"
+SRC_CLASSIC_VS_NEW = f"{HUB}/slots/classic-blackjack-vs-the-new-blackjack/"
+SRC_PERFECT_PAIRS = f"{HUB}/blackjack/an-introduction-to-perfect-pairs-blackjack/"
+SRC_ROULETTE = f"{HUB}/roulette/you-need-to-try-these-roulette-strategies/"
+SRC_LIVE = f"{HUB}/table-games/live-dealer-games-what-you-need-to-know/"
+SRC_SUPER6 = f"{HUB}/table-games/live-dealer-super-6-guide/"
+SRC_TOS = "https://www.bovada.lv/terms-of-service"
+
+TOS_NOTE = (
+    "Bovada Terms of Service s.6.3 (updated Jan 3, 2024) prohibit 'external player assistance programs' designed to "
+    "give an unfair advantage, explicitly including computer software, with account closure and voided winnings as "
+    "the penalty. Card counting is not mentioned. Using this tool DURING real-money play could fall under s.6.3; "
+    "use it for study, drills and post-session review. It places no bets and never touches the site."
+)
+
+
 def _bovada_templates() -> list[VenueProfile]:
-    common_notes = [
-        "Template only: values are typical of RNG online blackjack and were not confirmed against Bovada's live rule screens.",
-        "RNG tables shuffle before every hand, so card counting carries no information there; the tracker is disabled for shuffle='per_hand'.",
-        "Check Bovada's terms of service for any restriction on third-party software or assistance during play. "
-        "This tool is designed for manual entry, study and post-session review; it places no bets and does not interact with the site.",
-    ]
+    """Bovada profiles. Fields marked confirmed were read on Bovada's public help pages
+    (agent-extracted, then re-checked against the live pages on BOVADA_CHECKED).
+    Unconfirmed fields keep conventional defaults, so profiles stay verified=False."""
+    rng_note = "Bovada says its RNG blackjack decks are shuffled after every hand, so card counting carries no information."
     return [
         VenueProfile(
             id="bovada-bj-rng-classic",
-            venue="Bovada", game="blackjack", title="Blackjack (RNG) – template",
+            venue="Bovada", game="blackjack", title="Classic Blackjack (RNG, 6 decks)",
             delivery="rng",
-            rules=BlackjackRules(decks=6, dealer_hits_soft_17=False, blackjack_payout=1.5, dealer_peeks=True,
-                                 double_on="any", double_after_split=True, max_split_hands=2,
-                                 resplit_aces=False, hit_split_aces=False, surrender="none",
+            rules=BlackjackRules(decks=6, dealer_hits_soft_17=True, blackjack_payout=1.5, dealer_peeks=True,
+                                 double_on="any", double_after_split=True, max_split_hands=3,
+                                 resplit_aces=False, hit_split_aces=False, surrender="late",
                                  shuffle="per_hand").to_dict(),
-            notes=common_notes,
+            confirmed_fields=["decks", "blackjack_payout", "shuffle", "dealer_hits_soft_17", "max_split_hands", "surrender offered"],
+            source=f"Bovada public pages, checked {BOVADA_CHECKED}: {SRC_TYPES} ; {SRC_PERFECT_PAIRS}",
+            notes=[rng_note,
+                   "Confirmed: 6 decks, 3:2, shuffled every hand, dealer hits soft 17, split up to three hands, surrender allowed.",
+                   "NOT published: dealer peek, doubling restrictions, double after split, split-ace rules, insurance, "
+                   "surrender timing (modelled as late surrender). Check the in-game rules screen for these.",
+                   TOS_NOTE],
         ),
         VenueProfile(
             id="bovada-bj-rng-single-deck",
-            venue="Bovada", game="blackjack", title="Single Deck Blackjack (RNG) – template",
+            venue="Bovada", game="blackjack", title="Single Deck Blackjack (RNG)",
             delivery="rng",
             rules=BlackjackRules(decks=1, dealer_hits_soft_17=True, blackjack_payout=1.5, dealer_peeks=True,
                                  double_on="any", double_after_split=True, max_split_hands=2,
+                                 hit_split_aces=False, surrender="none", shuffle="per_hand").to_dict(),
+            confirmed_fields=["decks", "dealer_hits_soft_17", "double_on", "double_after_split", "hit_split_aces",
+                              "blackjack_payout", "shuffle", "max_split_hands (New format: 2; Classic format: 3)"],
+            source=f"Bovada public pages, checked {BOVADA_CHECKED}: {SRC_SINGLE} ; {SRC_CLASSIC_VS_NEW} ; {SRC_TYPES}",
+            notes=[rng_note,
+                   "Confirmed: 1 deck, dealer hits soft 17, double any two cards, double after split, split aces get one "
+                   "card, 3:2, split to two hands in the New format (three in the Classic format: set max_split_hands=3).",
+                   "NOT published: dealer peek, surrender, insurance.",
+                   TOS_NOTE],
+        ),
+        VenueProfile(
+            id="bovada-bj-rng-double-deck",
+            venue="Bovada", game="blackjack", title="Double Deck Blackjack (RNG)",
+            delivery="rng",
+            rules=BlackjackRules(decks=2, dealer_hits_soft_17=True, blackjack_payout=1.5, dealer_peeks=True,
+                                 double_on="any", double_after_split=True, max_split_hands=2,
                                  surrender="none", shuffle="per_hand").to_dict(),
-            notes=common_notes + [
-                "An unverified secondary source describes a Bovada single-deck game as H17 with double on any two "
-                "cards and after splits; confirm on the game screen (some online single-deck games pay 6:5).",
-            ],
+            confirmed_fields=["decks", "max_split_hands (split once)"],
+            source=f"Bovada public pages, checked {BOVADA_CHECKED}: {SRC_TYPES}",
+            notes=["Confirmed: 2 decks, split once per round. Bovada says it shares Single Deck's rules, which would "
+                   "mean H17, double any two, DAS; that inference is not a direct statement for this game.",
+                   "NOT published: blackjack payout, dealer peek, surrender, insurance, shuffle frequency "
+                   "(assumed every hand like Bovada's other RNG blackjack).",
+                   TOS_NOTE],
         ),
         VenueProfile(
             id="bovada-bj-live",
@@ -93,11 +139,12 @@ def _bovada_templates() -> list[VenueProfile]:
             rules=BlackjackRules(decks=8, dealer_hits_soft_17=False, blackjack_payout=1.5, dealer_peeks=False,
                                  enhc_lose_doubles_and_splits=False, double_on="any", double_after_split=True,
                                  max_split_hands=2, surrender="none", shuffle="shoe", penetration=0.5).to_dict(),
+            source=f"no rules published; searched {BOVADA_CHECKED}: {SRC_LIVE}",
             notes=[
-                "Template only: many live-dealer studios use 8-deck shoes, no hole card, and a cut card near half "
-                "the shoe; confirm deck count, peek rule, payout and penetration on the table's info panel.",
+                "Bovada's public pages give NO live-blackjack rules (decks, soft 17, payout, peek, penetration all not found). "
+                "Everything here is a generic live-studio template; read the table's info panel.",
                 "If the studio uses a continuous shuffler, set shuffle='csm' — counting is then meaningless.",
-                common_notes[2],
+                TOS_NOTE,
             ],
         ),
         VenueProfile(
@@ -105,21 +152,30 @@ def _bovada_templates() -> list[VenueProfile]:
             venue="Bovada", game="baccarat", title="Baccarat – template",
             delivery="unknown",
             rules={"decks": 8, "variant": "commission", "commission": 0.05, "tie_pays": 8.0, "pair_pays": 11.0},
-            notes=["Template only: confirm deck count, commission and tie/pair payouts."],
+            source=f"standard-baccarat rules not published; searched {BOVADA_CHECKED}",
+            notes=["Bovada's public pages give no standard-baccarat rules. Its live 'Super 6' game is documented "
+                   f"(6 decks, 5% banker commission, tie 8:1, pairs 11:1: {SRC_SUPER6}) but Bovada calls it a "
+                   "different game, so it is not modelled here."],
         ),
         VenueProfile(
             id="bovada-roulette-american",
-            venue="Bovada", game="roulette", title="American Roulette – template",
+            venue="Bovada", game="roulette", title="American Roulette (0, 00)",
             delivery="rng",
             rules={"wheel": "american", "la_partage": False, "en_prison": False},
-            notes=["Template only: confirm wheel type (single vs double zero) in the game."],
+            verified=True, confirmed_fields=["wheel"],
+            source=f"Bovada public pages, checked {BOVADA_CHECKED}: {SRC_ROULETTE}",
+            notes=["Confirmed: American wheel has 38 slots with 0 and 00. Also offered live. "
+                   "No special half-back rules apply to double-zero wheels."],
         ),
         VenueProfile(
             id="bovada-roulette-european",
-            venue="Bovada", game="roulette", title="European Roulette – template",
+            venue="Bovada", game="roulette", title="European Roulette (single 0)",
             delivery="rng",
             rules={"wheel": "european", "la_partage": False, "en_prison": False},
-            notes=["Template only: confirm wheel type and whether La Partage/En Prison applies."],
+            confirmed_fields=["wheel"],
+            source=f"Bovada public pages, checked {BOVADA_CHECKED}: {SRC_ROULETTE}",
+            notes=["Confirmed: 37 slots, single zero (also Flash Roulette). La Partage / En Prison: NOT published; "
+                   "modelled as absent (the conservative assumption). Check the game's rules screen."],
         ),
     ]
 
