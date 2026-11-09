@@ -11,7 +11,13 @@ Guarantees:
 * A create is attempted ONCE. If its outcome is ambiguous (timeout, network
   error, 5xx), we raise AmbiguousCreateError and never retry: a retry could
   start a second billable run.
-* Abandoned runs (timeout, interrupt, any error while waiting) are cancelled.
+* Abandoned runs (timeout, interrupt, any error while waiting) are cancelled:
+  per the docs, a client-side wait timeout does NOT cancel the server-side run.
+* Browsers: a V4 agent run's browser stops by itself ~120 s after the run
+  (the minimum keepAlive); we never raise keepAlive, so no idle browser is
+  left running. `browsers.stop` applies only to standalone managed browsers,
+  which this integration does not create.
+* Verified against docs.browser-use.com/llms.txt (fetched 2026-11-09).
 * Results are validated: status must be "completed", no error, non-empty
   result, and (if an output schema is given) its required keys present.
 """
