@@ -18,6 +18,7 @@ from ..blackjack.solver import BlackjackSolver
 from ..cards import full_shoe, parse_card, parse_cards, remove
 from ..games import baccarat, roulette
 from ..lab import progressions, risk
+from ..grading import grade_no_bet, grade_play
 from ..profiles import ProfileStore, VenueProfile
 from ..state.table import Observation, TableSession
 
@@ -38,13 +39,19 @@ def solver_for(rules: BlackjackRules) -> BlackjackSolver:
 
 
 def _rules(profile_id: str | None, rules: dict | None) -> tuple[BlackjackRules, str]:
+    return _rules_v(profile_id, rules)[:2]
+
+
+def _rules_v(profile_id: str | None, rules: dict | None) -> tuple[BlackjackRules, str, bool]:
+    """Rules, banner, and whether they count as verified (overrides void verification)."""
     if profile_id:
         p = store.get(profile_id)
         if p.game != "blackjack":
             raise HTTPException(400, "profile is not a blackjack profile")
         base = p.rules | (rules or {})
-        return BlackjackRules.from_dict(base), p.status_banner() + (" (with overrides)" if rules else "")
-    return BlackjackRules.from_dict(rules or {}), "custom rules (user-supplied)"
+        return (BlackjackRules.from_dict(base), p.status_banner() + (" (with overrides)" if rules else ""),
+                p.verified and not rules)
+    return BlackjackRules.from_dict(rules or {}), "custom rules (user-supplied)", False
 
 
 class BJRequest(BaseModel):
@@ -84,7 +91,7 @@ def save_profile(pid: str, body: dict):
 
 @app.post("/api/blackjack/analyze")
 def bj_analyze(req: BJRequest):
-    rules, banner = _rules(req.profile_id, req.rules)
+    rules, banner, verified = _rules_v(req.profile_id, req.rules)
     try:
         player = parse_cards(req.player)
         up = parse_card(req.dealer_up)
@@ -104,7 +111,9 @@ def bj_analyze(req: BJRequest):
         raise HTTPException(422, "need at least two player cards")
     a = solver_for(rules).analyze(player, up, shoe, is_split_hand=req.is_split_hand,
                                   hands_after_split=req.hands_after_split, shoe_source=src)
-    return a.to_dict() | {"profile": banner}
+    out = a.to_dict() | {"profile": banner}
+    out["grade"] = grade_play(out, rules_verified=verified).to_dict()
+    return out
 
 
 class BaccaratRequest(BaseModel):
@@ -124,7 +133,9 @@ def bac_analyze(req: BaccaratRequest):
         except ValueError as e:
             raise HTTPException(422, str(e))
     out = baccarat.analyze(r, comp)
-    out["profile"] = store.get(req.profile_id).status_banner() if req.profile_id else "custom rules"
+    prof = store.get(req.profile_id) if req.profile_id else None
+    out["profile"] = prof.status_banner() if prof else "custom rules"
+    out["grade"] = grade_no_bet("baccarat", out["bets"][0]["ev"], rules_verified=bool(prof and prof.verified and not req.rules))
     return out
 
 
@@ -142,7 +153,9 @@ def rl_analyze(req: RouletteRequest):
         if getattr(req, k) is not None:
             base[k] = getattr(req, k)
     out = roulette.analyze(roulette.RouletteRules(**base))
-    out["profile"] = store.get(req.profile_id).status_banner() if req.profile_id else "custom rules"
+    prof = store.get(req.profile_id) if req.profile_id else None
+    out["profile"] = prof.status_banner() if prof else "custom rules"
+    out["grade"] = grade_no_bet("roulette", out["bets"][0]["ev"], rules_verified=bool(prof and prof.verified))
     return out
 
 
@@ -151,15 +164,20 @@ class SessionCreate(BaseModel):
     profile_id: str | None = "reference-6d-s17"
     rules: dict | None = None
     counting_system: str = "hilo"
+    bankroll_units: float = Field(200, gt=0)
+    max_units: float = Field(8, ge=1)
+    can_sit_out: bool = True
 
 
 @app.post("/api/session")
 def create_session(req: SessionCreate):
     if req.counting_system not in SYSTEMS:
         raise HTTPException(422, f"unknown system; choose {sorted(SYSTEMS)}")
-    rules, banner = _rules(req.profile_id, req.rules)
+    rules, banner, verified = _rules_v(req.profile_id, req.rules)
     sid = uuid.uuid4().hex[:12]
-    SESSIONS[sid] = TableSession(rules, req.counting_system, profile_banner=banner)
+    SESSIONS[sid] = TableSession(rules, req.counting_system, profile_banner=banner, rules_verified=verified,
+                                 bankroll_units=req.bankroll_units, max_units=req.max_units,
+                                 can_sit_out=req.can_sit_out)
     return {"session_id": sid, "rules": rules.describe(), "profile": banner,
             "counting_meaningful": rules.counting_meaningful}
 
@@ -225,6 +243,11 @@ def state(sid: str):
         "rules": s.rules.describe(),
         "profile": s.profile_banner,
     }
+
+
+@app.get("/api/session/{sid}/bet")
+def bet_suggestion(sid: str):
+    return _sess(sid).bet_suggestion()
 
 
 @app.get("/api/session/{sid}/analyze")

@@ -40,16 +40,21 @@ td.num{text-align:right}
 .pill{display:inline-block;padding:2px 8px;border-radius:999px;background:var(--chip);font-size:12px;margin:2px 4px 2px 0}
 .hand{font-size:22px;font-weight:600;letter-spacing:.08em;min-height:30px}
 .hidden{display:none}
+.card:empty{display:none}
 .stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
 .stat{background:var(--chip);border-radius:8px;padding:8px}
 .stat b{display:block;font-size:20px}
 .stat span{font-size:12px;color:var(--muted)}
 pre{white-space:pre-wrap;font-size:12px;color:var(--muted)}
+.grade{display:flex;gap:12px;align-items:flex-start;padding:10px;border-radius:10px;background:var(--chip);margin:10px 0}
+.grade .g{font-size:26px;font-weight:800;width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:none;color:#fff}
+.gA{background:#0f6e5a}.gB{background:#3f7d2e}.gC{background:#a8701a}.gD{background:#a8323a}.gX{background:#6b6e76}
+.grade ul{margin:4px 0 0;padding-left:18px;font-size:13px;color:var(--muted)}
 </style>
 </head>
 <body>
 <header>
-  <div><h1>CASINO SAVANT</h1><div class="sub">Exact-math decision support · manual entry · no live feed connected</div></div>
+  <div><h1>CASINO SAVANT</h1><div class="sub">Graded suggestions only · you place every bet · manual entry · no casino connection</div></div>
   <nav id="tabs">
     <button data-t="bj" class="on">Blackjack</button>
     <button data-t="table">Table tracker</button>
@@ -76,6 +81,8 @@ pre{white-space:pre-wrap;font-size:12px;color:var(--muted)}
   <div class="card">
     <h2>Session</h2>
     <label>Rules profile</label><select id="tb-profile"></select>
+    <div class="row"><div><label>Bankroll (units)</label><input id="tb-bank" value="200"></div><div><label>Max bet (units)</label><input id="tb-max" value="8"></div></div>
+    <label><input type="checkbox" id="tb-sit" checked style="width:auto"> Table lets me sit out rounds</label>
     <label>Counting system</label>
     <select id="tb-sys"><option value="hilo">Hi-Lo</option><option value="ko">KO</option><option value="hiopt1">Hi-Opt I</option><option value="hiopt2">Hi-Opt II</option><option value="omega2">Omega II</option><option value="halves">Wong Halves</option><option value="zen">Zen</option></select>
     <button class="primary" id="tb-new">Start session</button>
@@ -98,6 +105,7 @@ pre{white-space:pre-wrap;font-size:12px;color:var(--muted)}
   </div>
   <div>
     <div class="card" id="tb-state"><p class="muted">Start a session, then tap cards as they are exposed. Every card is entered once; nothing is guessed.</p></div>
+    <div class="card" id="tb-bet" style="margin-top:16px"></div>
     <div class="card" id="tb-out" style="margin-top:16px"></div>
     <div class="card" id="tb-audit" style="margin-top:16px"></div>
   </div>
@@ -143,14 +151,16 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('main>section').forEach(s=>s.classList.toggle('hidden',s.id!=='t-'+b.dataset.t))});
 let PROFILES=[];
 function fill(sel,game){$(sel).innerHTML=PROFILES.filter(p=>p.game===game).map(p=>`<option value="${p.id}">${esc(p.venue)} · ${esc(p.title)}${p.verified?'':' (unverified)'}</option>`).join('')}
+function gradeBox(g,title){if(!g)return '';const c={'A':'gA','B':'gB','C':'gC','D':'gD'}[g.letter]||'gX';
+  return `<div class="grade"><div class="g ${c}">${esc(g.letter)}</div><div><b>${esc(title||'Suggestion grade')}</b> <span class="muted">${g.score}/100</span><div>${esc(g.summary)}</div>${g.reasons&&g.reasons.length?'<ul>'+g.reasons.map(r=>`<li>${esc(r)}</li>`).join('')+'</ul>':''}</div></div>`}
 function banner(t){return `<div class="banner ${/UNVERIFIED/.test(t)?'warn':''}">${esc(t)}</div>`}
 function err(el,e){$(el).innerHTML=`<div class="banner warn">${esc(e.message)}</div>`}
 api('/api/profiles').then(p=>{PROFILES=p;fill('#bj-profile','blackjack');fill('#tb-profile','blackjack');fill('#bac-profile','baccarat');fill('#rl-profile','roulette')});
 
 function renderBJ(a){
-  if(a.ready===false)return `<div class="banner warn">Waiting for input: ${a.missing.map(esc).join('; ')}</div>`;
+  if(a.ready===false)return `<div class="banner warn">No suggestion yet: ${a.missing.map(esc).join('; ')}</div>`;
   let h=banner(a.profile||'');
-  h+=`<div class="muted">${a.soft?'Soft':'Hard'} ${a.player_total} (${a.player_cards.join(' ')}) vs ${a.dealer_up}</div><div class="verdict">${esc(a.best)}</div>`;
+  h+=`<div class="muted">Suggestion · ${a.soft?'Soft':'Hard'} ${a.player_total} (${a.player_cards.join(' ')}) vs ${a.dealer_up}</div><div class="verdict">${esc(a.best)}</div>`+gradeBox(a.grade);
   h+=`<p>${esc(a.explanation)}</p><table><tr><th>Action</th><th class="num">EV / unit</th><th></th></tr>`;
   a.legal.forEach((x,i)=>h+=`<tr><td>${i===0?'<b>':''}${esc(x.action)}${i===0?'</b>':''}</td><td class="num">${sg(x.ev)}</td><td class="muted">${x.exact?'exact':'approx.'} ${esc(x.note||'')}</td></tr>`);
   h+='</table>';
@@ -169,7 +179,7 @@ $('#keys').innerHTML=RANKS.map(r=>`<button class="ghost" data-r="${r}">${r}</but
 document.querySelectorAll('.tgt').forEach(b=>b.onclick=()=>{TARGET=b.dataset.s;document.querySelectorAll('.tgt').forEach(x=>x.style.outline=x===b?'2px solid var(--accent)':'none')});
 document.querySelector('.tgt').click();
 ['HIT','STAND','DOUBLE','SPLIT','SURRENDER'].forEach(a=>{const b=document.createElement('button');b.className='ghost';b.textContent=a;b.onclick=()=>decide(a);$('#acts').appendChild(b)});
-$('#tb-new').onclick=async()=>{try{const s=await api('/api/session',{profile_id:$('#tb-profile').value,counting_system:$('#tb-sys').value});SID=s.session_id;IDX={};$('#tb-controls').classList.remove('hidden');refresh();$('#tb-audit').innerHTML=''}catch(e){err('#tb-state',e)}};
+$('#tb-new').onclick=async()=>{try{const s=await api('/api/session',{profile_id:$('#tb-profile').value,counting_system:$('#tb-sys').value,bankroll_units:+$('#tb-bank').value,max_units:+$('#tb-max').value,can_sit_out:$('#tb-sit').checked});SID=s.session_id;IDX={};$('#tb-controls').classList.remove('hidden');refresh();$('#tb-audit').innerHTML=''}catch(e){err('#tb-state',e)}};
 document.querySelectorAll('#keys button').forEach(b=>b.onclick=async()=>{
   const slot=TARGET==='other'?'other':TARGET;IDX[slot]=(IDX[slot]||0);
   const r=await api(`/api/session/${SID}/observe`,{slot,index:IDX[slot],rank:b.dataset.r});
@@ -178,7 +188,8 @@ $('#tb-burn').onclick=async()=>refresh(await api(`/api/session/${SID}/burn`,{}))
 $('#tb-round').onclick=async()=>{IDX={};refresh(await api(`/api/session/${SID}/new_round`,{}))};
 $('#tb-shuffle').onclick=async()=>{IDX={};refresh(await api(`/api/session/${SID}/shuffle`,{}))};
 async function decide(a){const r=await api(`/api/session/${SID}/decision`,{action:a});if(!r.recorded){alert(r.reason||r.missing);return}const au=await api(`/api/session/${SID}/audit`);
-  $('#tb-audit').innerHTML=`<h2>Replay Lab audit</h2><div class="stats"><div class="stat"><b>${au.decisions}</b><span>decisions</span></div><div class="stat"><b>${au.mistakes}</b><span>below-optimal</span></div><div class="stat"><b>${au.total_ev_lost_units.toFixed(4)}</b><span>EV lost (units)</span></div></div><p class="muted">${esc(au.interpretation)}</p>`+(au.worst.length?'<table><tr><th>Round</th><th>Hand</th><th>Took</th><th>Best</th><th class="num">EV lost</th></tr>'+au.worst.map(d=>`<tr><td>${d.round}</td><td>${d.player.join(' ')} v ${d.dealer_up}</td><td>${d.taken}</td><td>${d.best}</td><td class="num">${d.ev_loss.toFixed(4)}</td></tr>`).join('')+'</table>':'')}
+  $('#tb-audit').innerHTML=`<h2>Replay Lab audit</h2><div class="stats"><div class="stat"><b>${au.decisions}</b><span>decisions</span></div><div class="stat"><b>${au.mistakes}</b><span>below-optimal</span></div><div class="stat"><b>${au.followed}</b><span>suggestions followed</span></div><div class="stat"><b>${au.total_ev_lost_units.toFixed(4)}</b><span>EV lost (units)</span></div></div>`+
+    '<table style="margin-top:10px"><tr><th>Grade</th><th class="num">Suggestions</th><th class="num">Followed</th><th class="num">EV lost when ignored</th></tr>'+Object.entries(au.by_grade).map(([g,v])=>`<tr><td>${g}</td><td class="num">${v.suggestions}</td><td class="num">${v.followed}</td><td class="num">${v.ev_lost_when_ignored.toFixed(4)}</td></tr>`).join('')+'</table>'+`<p class="muted">${esc(au.interpretation)}</p>`+(au.worst.length?'<table><tr><th>Round</th><th>Hand</th><th>Took</th><th>Best</th><th class="num">EV lost</th></tr>'+au.worst.map(d=>`<tr><td>${d.round}</td><td>${d.player.join(' ')} v ${d.dealer_up}</td><td>${d.taken}</td><td>${d.best}</td><td class="num">${d.ev_loss.toFixed(4)}</td></tr>`).join('')+'</table>':'')}
 async function refresh(st){
   st=st||await api(`/api/session/${SID}`);
   const c=st.count;let h=banner(st.profile)+`<div class="muted">Round ${st.round_id} · ${esc(st.rules)}</div><div class="row" style="margin:8px 0"><div><div class="muted">Dealer</div><div class="hand">${st.dealer.join(' ')||'—'}</div></div><div><div class="muted">You</div><div class="hand">${st.player.join(' ')||'—'}</div></div></div>`;
@@ -186,14 +197,16 @@ async function refresh(st){
   else h+=`<div class="stats"><div class="stat"><b>${c.running_count}</b><span>running count (${esc(c.system)})</span></div><div class="stat"><b>${c.true_count===null?'n/a':c.true_count.toFixed(2)}</b><span>true count</span></div><div class="stat"><b>${c.decks_remaining}</b><span>decks left</span></div><div class="stat"><b>${(c.penetration*100).toFixed(1)}%</b><span>penetration</span></div><div class="stat"><b>${c.cards_seen}</b><span>cards seen</span></div><div class="stat"><b>±${c.true_count_sd_from_burns}</b><span>TC sd (burns)</span></div></div>`;
   if(st.conflicts.length)h+=`<div class="banner warn">Conflicting reads need correction: ${esc(JSON.stringify(st.conflicts))}</div>`;
   $('#tb-state').innerHTML=h;
+  const bs=await api(`/api/session/${SID}/bet`);
+  $('#tb-bet').innerHTML=`<h2>Next-round bet suggestion</h2><div class="verdict" style="font-size:22px">${esc(bs.suggestion)}</div>`+gradeBox(bs.grade)+(bs.edge_basis?`<p class="muted">Edge basis: ${esc(bs.edge_basis)}. You place every bet yourself; this tool never bets.</p>`:'');
   const a=await api(`/api/session/${SID}/analyze`);$('#tb-out').innerHTML=renderBJ(a);
 }
 
 // ---- baccarat / roulette / lab
 $('#bac-go').onclick=async()=>{try{const a=await api('/api/baccarat/analyze',{profile_id:$('#bac-profile').value,seen_cards:$('#bac-seen').value||null});
-  $('#bac-out').innerHTML=banner(a.profile)+`<div class="verdict">${a.recommendation}</div><p>${esc(a.explanation)}</p><p class="muted">P(Banker) ${pct(a.p_banker)} · P(Player) ${pct(a.p_player)} · P(Tie) ${pct(a.p_tie)} · ${a.cards_remaining} cards</p><table><tr><th>Bet</th><th class="num">EV / unit</th><th class="num">Variance</th></tr>`+a.bets.map(b=>`<tr><td>${b.bet}</td><td class="num">${sg(b.ev)}</td><td class="num">${b.variance.toFixed(3)}</td></tr>`).join('')+'</table>'}catch(e){err('#bac-out',e)}};
+  $('#bac-out').innerHTML=banner(a.profile)+`<div class="verdict">${a.recommendation}</div>`+gradeBox(a.grade)+`<p>${esc(a.explanation)}</p><p class="muted">P(Banker) ${pct(a.p_banker)} · P(Player) ${pct(a.p_player)} · P(Tie) ${pct(a.p_tie)} · ${a.cards_remaining} cards</p><table><tr><th>Bet</th><th class="num">EV / unit</th><th class="num">Variance</th></tr>`+a.bets.map(b=>`<tr><td>${b.bet}</td><td class="num">${sg(b.ev)}</td><td class="num">${b.variance.toFixed(3)}</td></tr>`).join('')+'</table>'}catch(e){err('#bac-out',e)}};
 $('#rl-go').onclick=async()=>{try{const a=await api('/api/roulette/analyze',{profile_id:$('#rl-profile').value});
-  $('#rl-out').innerHTML=banner(a.profile)+`<div class="verdict">${a.recommendation}</div><p>${esc(a.explanation)}</p><table><tr><th>Bet</th><th class="num">Pays</th><th class="num">P(win)</th><th class="num">House edge</th></tr>`+a.bets.map(b=>`<tr><td>${b.bet}</td><td class="num">${b.payout}:1</td><td class="num">${pct(b.p_win)}</td><td class="num">${pct(b.house_edge)}</td></tr>`).join('')+'</table>'}catch(e){err('#rl-out',e)}};
+  $('#rl-out').innerHTML=banner(a.profile)+`<div class="verdict">${a.recommendation}</div>`+gradeBox(a.grade)+`<p>${esc(a.explanation)}</p><table><tr><th>Bet</th><th class="num">Pays</th><th class="num">P(win)</th><th class="num">House edge</th></tr>`+a.bets.map(b=>`<tr><td>${b.bet}</td><td class="num">${b.payout}:1</td><td class="num">${pct(b.p_win)}</td><td class="num">${pct(b.house_edge)}</td></tr>`).join('')+'</table>'}catch(e){err('#rl-out',e)}};
 $('#lab-go').onclick=async()=>{$('#lab-out').innerHTML='<p class="muted">Running…</p>';try{const r=await api('/api/lab/progression',{bet:$('#lab-bet').value,progression:$('#lab-prog').value,sessions:+$('#lab-n').value,rounds:+$('#lab-r').value,bankroll:+$('#lab-b').value,seed:+$('#lab-s').value});
   $('#lab-out').innerHTML=`<h2>${esc(r.progression)}</h2><div class="stats"><div class="stat"><b>${pct(r.observed_return_per_unit_wagered)}</b><span>observed return / unit wagered</span></div><div class="stat"><b>${pct(r.theoretical_edge_per_unit)}</b><span>theoretical</span></div><div class="stat"><b>${pct(r.p_session_win)}</b><span>sessions ending ahead</span></div><div class="stat"><b>${pct(r.p_bust)}</b><span>sessions busted</span></div><div class="stat"><b>${r.worst_session.toFixed(0)}</b><span>worst session</span></div><div class="stat"><b>${r.mean_wagered.toFixed(0)}</b><span>avg wagered</span></div></div><p>95% CI for return per unit: [${pct(r.ci95[0])}, ${pct(r.ci95[1])}] — theoretical edge ${r.edge_inside_ci?'<b>inside</b>':'<b>outside</b>'} the interval.</p><p class="muted">A higher share of winning sessions is bought with rare, larger losses; the expectation per unit wagered is unchanged.</p>`}catch(e){err('#lab-out',e)}};
 </script>

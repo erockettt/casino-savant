@@ -62,6 +62,39 @@ print(BlackjackSim(r, SimConfig(rounds=2_000_000, use_indices=True, bet_ramp={-9
 - **Baccarat and roulette:** every standard wager has negative expectation. The engines will say **NO BET**.
   Roads, streaks and progressions do not change this (Benchmark §4).
 
+## Graded suggestions: how to use them on Bovada Live
+
+The tool **only suggests**. You place every bet yourself.
+
+1. In the dashboard, open **Table tracker**, choose `bovada-bj-live` (or your verified copy), and enter your
+   bankroll and maximum bet in units. Untick "Table lets me sit out rounds" if the table doesn't allow it.
+2. As cards are exposed, tap them in. The tool shows two graded suggestions:
+   - **Next-round bet:** SIT OUT, TABLE MINIMUM, or BET n UNITS, from the true count and half-Kelly sizing.
+   - **Playing action:** the exact-EV best action, with every alternative's EV.
+3. After acting, tap the action you took. The **Replay Lab** groups your decisions by grade and reports the
+   EV you gave up by not following the suggestion. Wins and losses are never used to grade: a correct play
+   that loses is variance.
+
+| Grade | Meaning |
+|---|---|
+| A | Clear-cut: large EV margin, verified rules, reliable inputs |
+| B | Sound: moderate margin, or one input caveat (e.g. unverified rules, few cards seen) |
+| C | Close call: options nearly equal, or the edge estimate is within its own error |
+| D | Weak foundation: several caveats stacked (approximation + unverified rules + guessed composition) |
+| — | No suggestion: a required card is missing or two readings conflict |
+
+Unverified Bovada templates cap most grades below A. Verifying the profile is the single biggest grade
+improvement you can make.
+
+### What the live-dealer study found (docs/LIVE_DEALER_STUDY.md)
+
+- Playing every round with a bet spread at 50–62.5% penetration did **not** beat an 8-deck shoe.
+- **Sitting out true counts below +1** produced +0.6% to +1.3% per unit bet. It needs 850–4,300 hours to reach N0
+  (the number of hours before expected profit outweighs one standard deviation of luck), and has a 30–55% risk of
+  ruin on a 200-unit bankroll. That's a long, high-variance grind, not a quick win.
+- Before investing time, measure Bovada Live's real penetration: over several shoes, count how many cards are
+  dealt before the shuffle. Then rerun the study with that number.
+
 ## Terms of service and responsible use
 
 Online casinos commonly restrict third-party software or assistance during play. I could not retrieve

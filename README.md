@@ -41,6 +41,8 @@ python scripts/run_benchmarks.py --rounds 4000000
 | Blackjack Monte Carlo (real shoe, cut card, splits, Hi-Lo ramp and indices, EV by true count) | `lab/blackjack_sim.py` | Built |
 | Progression lab (Martingale, Reverse Martingale, Paroli, Fibonacci, D'Alembert, Labouchere, flat) | `lab/progressions.py` | Built |
 | Risk: conservative-edge Kelly, risk of ruin, session tracker with loss limits | `lab/risk.py` | Built |
+| **Graded suggestions**: every playing action, next-bet size and NO BET gets an A–D grade with the reasons. The system never bets | `grading.py` | Built |
+| Live-dealer study (penetration × rules × spread, with sit-out) | `scripts/live_dealer_study.py` → `docs/LIVE_DEALER_STUDY.md` | Built |
 | Venue profiles with verification status, **Bovada templates** | `profiles.py`, `profiles/*.json` | Built — Bovada rules **unverified** |
 | FastAPI backend + dashboard | `api/app.py`, `web/index.html` | Built |
 

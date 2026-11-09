@@ -19,6 +19,7 @@ from ..blackjack.counting import ShoeTracker
 from ..blackjack.rules import BlackjackRules
 from ..blackjack.solver import BlackjackSolver
 from ..cards import label, parse_card
+from ..grading import grade_play, suggest_bet
 
 
 @dataclass
@@ -38,6 +39,10 @@ class TableSession:
     counting_system: str = "hilo"
     min_confidence: float = 0.98
     profile_banner: str = ""
+    rules_verified: bool = False
+    can_sit_out: bool = True
+    bankroll_units: float = 200.0
+    max_units: float = 8.0
     round_id: int = 1
     cards: dict = field(default_factory=dict)       # (round, slot, index) -> rank idx
     conflicts: list = field(default_factory=list)
@@ -130,7 +135,19 @@ class TableSession:
         out["ready"] = True
         out["count"] = self.tracker.snapshot() if self.rules.counting_meaningful else None
         out["profile"] = self.profile_banner
+        out["grade"] = grade_play(out, rules_verified=self.rules_verified).to_dict()
         return out
+
+    def bet_suggestion(self) -> dict:
+        """Graded suggestion for the size of the NEXT bet (the system never bets itself)."""
+        tc = self.tracker.true_count(rounding="none") if self.rules.counting_meaningful else None
+        if self.rules.counting_meaningful and self.counting_system != "hilo":
+            # sizing model is calibrated for Hi-Lo; derive the Hi-Lo TC from the exact composition
+            tc = self.tracker.true_count("hilo", rounding="none")
+        return suggest_bet(self.rules, true_count=tc, rules_verified=self.rules_verified,
+                           bankroll_units=self.bankroll_units, max_units=self.max_units,
+                           cards_seen=sum(self.tracker.seen), tc_sd=self.tracker.count_uncertainty(),
+                           can_sit_out=self.can_sit_out)
 
     # -------------------------------------------------------------- replay lab
     def record_decision(self, slot: str, action_taken: str) -> dict:
@@ -143,6 +160,7 @@ class TableSession:
             return {"recorded": False, "reason": f"{taken} not legal here; legal: {list(evs)}"}
         best = a["best"]
         entry = {
+            "grade": a["grade"]["letter"], "followed": taken == best,
             "t": time.time(), "round": self.round_id, "slot": slot,
             "player": a["player_cards"], "dealer_up": a["dealer_up"],
             "taken": taken, "best": best, "ev_taken": evs[taken], "ev_best": evs[best],
@@ -155,8 +173,16 @@ class TableSession:
     def audit(self) -> dict:
         n = len(self.decisions)
         errs = [d for d in self.decisions if d["ev_loss"] > 1e-9]
+        by_grade = {}
+        for d in self.decisions:
+            g = by_grade.setdefault(d["grade"], {"suggestions": 0, "followed": 0, "ev_lost_when_ignored": 0.0})
+            g["suggestions"] += 1
+            g["followed"] += d["followed"]
+            g["ev_lost_when_ignored"] += d["ev_loss"]
         return {
             "decisions": n,
+            "followed": sum(d["followed"] for d in self.decisions),
+            "by_grade": dict(sorted(by_grade.items())),
             "mistakes": len(errs),
             "total_ev_lost_units": sum(d["ev_loss"] for d in errs),
             "worst": sorted(errs, key=lambda d: d["ev_loss"], reverse=True)[:10],

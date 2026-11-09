@@ -21,6 +21,7 @@ Labels: **PROVEN MATHEMATICALLY** · **EMPIRICALLY SUPPORTED** · **HYPOTHESIS**
 | F12 | Counting yields nothing on reshuffle-every-hand games | PROVEN (no information carried between rounds) · confirmed by simulation | BENCHMARKS §3 |
 | F13 | Illustrious 18 / Fab 4 Hi-Lo indices | EMPIRICALLY SUPPORTED (literature); **not re-derived here** | Schlesinger, *Blackjack Attack* |
 | F14 | Extreme baccarat compositions can make a bet positive (e.g. pairs) | PROVEN for the composition; **operational value INCONCLUSIVE** (rare, late in the shoe, needs exact tracking) | `test_baccarat_card_removal_can_flip_sign_in_extreme_shoes` |
+| F16 | Live-dealer 8D shoes are beatable only by sitting out negative counts, with modest edges and long horizons | EMPIRICALLY SUPPORTED (simulation, template rules) | LIVE_DEALER_STUDY.md |
 | F15 | Wheel bias could create a roulette edge | HYPOTHESIS. It needs a wheel-specific dataset with enough power to detect a bias larger than the house edge (see Q4) | — |
 
 ## Source register
@@ -41,7 +42,7 @@ Labels: **PROVEN MATHEMATICALLY** · **EMPIRICALLY SUPPORTED** · **HYPOTHESIS**
 
 - Q1 Exact multi-hand split EV (replace the BJ-4 approximation); measure the approximation error by exhaustive enumeration at 1–2 decks.
 - Q2 Simulation-derived betting correlation (BC), playing efficiency (PE) and insurance correlation (IC) for every implemented count, plus sensitivity to missed cards.
-- Q3 Live-dealer blackjack at about 50% penetration with no hole card: what spread is needed for a positive EV, and what is the risk of ruin?
+- ~~Q3~~ **Answered** in [LIVE_DEALER_STUDY.md](LIVE_DEALER_STUDY.md). In 8-deck shoes at 50–62.5% penetration, playing every round with a 1–8 or 1–16 spread shows **no** edge at 95% confidence. Sitting out true counts below +1 shows +0.6% to +1.3% per unit bet across every rule set and penetration tested. It needs roughly 850–4,300 hours to reach N0, with a 30–55% risk of ruin on a 200-unit bankroll. Label: EMPIRICALLY SUPPORTED (simulation) for template rules.
 - Q4 Roulette bias power analysis: spins needed to detect a pocket bias of size δ at α = 0.05 / 37 (Bonferroni) with 80% power, and whether such a δ beats 2.70%.
 - Q5 Full-shoe baccarat composition simulation: how often any bet turns positive at realistic cut-card depth, and the EV per hand of a perfect-information side counter.
 - Q6 Recogniser validation: build a labelled screenshot dataset and require ≥99.5% per-card accuracy with calibrated confidence before vision input can bypass manual confirmation.

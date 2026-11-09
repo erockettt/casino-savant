@@ -27,13 +27,13 @@ class SimConfig:
     rounds: int = 200_000
     seed: int = 1
     use_indices: bool = False
-    bet_ramp: dict | None = None    # {true_count_floor: units}; default flat 1 unit
+    bet_ramp: dict | None = None    # {true_count_floor: units}; default flat 1 unit; 0 units = sit out (watch only)
     count_rounding: str = "floor"
 
 
 @dataclass
 class SimResult:
-    rounds: int
+    rounds: int                  # rounds observed (played + sat out); EV/SD are per observed round
     total_wagered: float
     net: float
     ev_per_round: float          # per initial unit
@@ -171,6 +171,7 @@ class BlackjackSim:
         shoe = Shoe(r.decks, r.penetration, self.rng, per_hand=(r.shuffle != "shoe"))
         ramp = cfg.bet_ramp or {}
         n = 0
+        sat_out = 0
         s1 = s2 = wag = 0.0
         by_tc = defaultdict(lambda: [0, 0.0, 0.0])
         for _ in range(cfg.rounds):
@@ -185,6 +186,9 @@ class BlackjackSim:
                 for k in keys:
                     if tc >= k:
                         bet = ramp[k]
+            sitting_out = bet <= 0
+            if sitting_out:
+                bet = 1.0  # phantom hand: consumes cards exactly like a real seat, but no money moves
             p = [shoe.draw()]
             up = shoe.draw()
             p.append(shoe.draw())
@@ -194,34 +198,49 @@ class BlackjackSim:
             dbj = _total(dealer)[0] == 21
             net = 0.0
             wagered = bet
-            if r.insurance_offered and up == 1 and cfg.use_indices and tc >= 3 and not pbj:
+            if r.insurance_offered and r.dealer_peeks and up == 1 and cfg.use_indices and tc >= 3 and not pbj:
                 ins = bet / 2
                 wagered += ins
                 net += 2 * ins if hole == 10 else -ins
-            if pbj or dbj:
-                if pbj and not dbj:
+            if pbj:
+                if not dbj:
                     net += r.blackjack_payout * bet
-                elif dbj and not pbj:
-                    net -= bet
+            elif dbj and r.dealer_peeks:
+                net -= bet
             else:
                 hands = self._play_hand(shoe, p, up, bet, first=True, n_hands_ref=[1], split_hand=False, tc=tc)
-                if any(h[0] not in ("bust", "surrender") for h in hands):
-                    while True:
-                        t, s = _total(dealer)
-                        if t > 17 or (t == 17 and not (s and r.dealer_hits_soft_17)):
-                            break
-                        dealer.append(shoe.draw())
-                dt = _total(dealer)[0]
                 wagered += sum(b for _, b in hands) - bet  # extra money from doubles/splits
-                for res, b in hands:
-                    if res == "surrender":
-                        net -= b / 2
-                    elif res == "bust":
-                        net -= b
-                    elif dt > 21 or res > dt:
-                        net += b
-                    elif res < dt:
-                        net -= b
+                if dbj:
+                    # ENHC: the natural is revealed after the player has acted
+                    if r.enhc_lose_doubles_and_splits:
+                        net -= sum(b for _, b in hands)
+                    else:
+                        net -= bet
+                else:
+                    if any(h[0] not in ("bust", "surrender") for h in hands):
+                        while True:
+                            t, s = _total(dealer)
+                            if t > 17 or (t == 17 and not (s and r.dealer_hits_soft_17)):
+                                break
+                            dealer.append(shoe.draw())
+                    dt = _total(dealer)[0]
+                    for res, b in hands:
+                        if res == "surrender":
+                            net -= b / 2
+                        elif res == "bust":
+                            net -= b
+                        elif dt > 21 or res > dt:
+                            net += b
+                        elif res < dt:
+                            net -= b
+            if sitting_out:
+                by_tc_obs = by_tc[max(-6, min(8, tc))]
+                by_tc_obs[0] += 1
+                by_tc_obs[1] += net
+                by_tc_obs[2] += net * net
+                n += 1
+                sat_out += 1
+                continue
             n += 1
             s1 += net
             s2 += net * net
@@ -239,6 +258,7 @@ class BlackjackSim:
             m = a / c
             s = math.sqrt(max(b2 / c - m * m, 0))
             tc_rows[k] = {"rounds": c, "freq": c / n, "ev_per_unit": m, "ci95_half": 1.96 * s / math.sqrt(c)}
-        return SimResult(n, wag, s1, mean, (mean - half, mean + half), sd, s1 / wag, tc_rows,
+        return SimResult(n, wag, s1, mean, (mean - half, mean + half), sd, s1 / wag if wag else 0.0, tc_rows,
                          {"rules": r.describe(), "rounds": cfg.rounds, "seed": cfg.seed,
-                          "indices": cfg.use_indices, "ramp": ramp})
+                          "indices": cfg.use_indices, "ramp": ramp, "rounds_sat_out": sat_out,
+                          "rounds_played": n - sat_out})
